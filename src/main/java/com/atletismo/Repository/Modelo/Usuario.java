@@ -1,6 +1,5 @@
 package com.atletismo.Repository.Modelo;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,12 +13,10 @@ import java.util.List;
 @Entity
 @ToString
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
-public class Usuarios {
+public class Usuario {
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuarios_id_seq")
-    @SequenceGenerator(name = "usuarios_id_seq", sequenceName = "usuarios_id_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "first_name")
@@ -34,7 +31,7 @@ public class Usuarios {
     @Column(name = "province")
     private String ciudad;
 
-    @Column(name = "usua_email",nullable = false)
+    @Column(name = "email",nullable = false)
     private String email;
 
     @Column(name = "phone")
@@ -63,5 +60,15 @@ public class Usuarios {
 
     @Column(name = "member_date")
     private Date fechaSuscripción;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Rol rol;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Documentos> documentos;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Competidor> competidores;
 
 }

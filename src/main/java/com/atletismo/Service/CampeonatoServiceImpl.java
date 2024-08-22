@@ -1,6 +1,7 @@
 package com.atletismo.Service;
 
 import com.atletismo.Repository.ICampeonatosRepository;
+import com.atletismo.Repository.IPruebasRepository;
 import com.atletismo.Repository.Modelo.Campeonato;
 import com.atletismo.Service.dto.CampeonatosDTO;
 import com.atletismo.Service.dto.PruebasDTO;

@@ -68,13 +68,13 @@ public class CampeonatoRepositoryImpl implements ICampeonatosRepository{
 
     @Override
     public List<Campeonato> listarCampeonatos() {
-        TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonatos c",Campeonato.class);
+        TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonato c",Campeonato.class);
         return myQ.getResultList();
     }
 
     @Override
     public List<Campeonato> listarCampeonatosProvincia(String provincia) {
-        TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonatos c WHERE c.sede = :provincia", Campeonatos.class);
+        TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonato c WHERE c.sede = :provincia", Campeonatos.class);
         myQ.setParameter("provincia", provincia);
         return myQ.getResultList();
     }

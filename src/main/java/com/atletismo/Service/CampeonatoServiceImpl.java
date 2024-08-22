@@ -3,6 +3,7 @@ package com.atletismo.Service;
 import com.atletismo.Repository.ICampeonatosRepository;
 import com.atletismo.Repository.IPruebasRepository;
 import com.atletismo.Repository.Modelo.Campeonato;
+import com.atletismo.Repository.Modelo.CampeonatoPrueba;
 import com.atletismo.Service.dto.CampeonatosDTO;
 import com.atletismo.Service.dto.PruebasDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,27 +74,27 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
         if (idCampeonato != null && !pruebasDTO.isEmpty()) {
             Campeonato campeonato = this.campeonatosRepo.buscarPorId(idCampeonato);
 
-            List<CampeonatosPruebas> existingPruebas = campeonato.getCampeonatosPruebas();
+            List<CampeonatoPrueba> existingPruebas = campeonato.getCampeonatoPruebas();
 
             Set<Integer> existingPruebaIds = existingPruebas.stream()
-                    .map(cp -> cp.getPruebas().getId())
+                    .map(cp -> cp.getPrueba().getId())
                     .collect(Collectors.toSet());
 
-            List<CampeonatosPruebas> listCamP = new ArrayList<>();
-            CampeonatosPruebas campP;
+            List<CampeonatoPrueba> listCamP = new ArrayList<>();
+            CampeonatoPrueba campP;
 
             for (PruebasDTO p : pruebasDTO) {
                 // Verificar si la prueba ya está asignada
                 if (!existingPruebaIds.contains(p.getId())) {
-                    campP = new CampeonatosPruebas();
-                    campP.setCampeonatos(campeonato);
-                    campP.setPruebas(this.pruebasRepository.buscarPorId(p.getId()));
+                    campP = new CampeonatoPrueba();
+                    campP.setCampeonato(campeonato);
+                    campP.setPrueba(this.pruebasRepository.buscarPorId(p.getId()));
                     listCamP.add(campP);
                 }
             }
 
             if (!listCamP.isEmpty()) {
-                campeonato.setCampeonatosPruebas(listCamP);
+                campeonato.setCampeonatoPruebas(listCamP);
                 this.campeonatosRepo.actualizarCampeonatos(campeonato);
                 flag = true;
             }
@@ -103,7 +104,7 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
 
     private CampeonatosDTO convertToDto(Campeonato campeonato) {
 
-        List<PruebasDTO> pruebas = campeonato.getCampeonatosPruebas().stream()
+        List<PruebasDTO> pruebas = campeonato.getCampeonatoPruebas().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
 
@@ -123,13 +124,13 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
 
     }
 
-    private PruebasDTO convertToDto(CampeonatosPruebas campeonatosPruebas) {
+    private PruebasDTO convertToDto(CampeonatoPrueba campeonatoPruebas) {
         PruebasDTO dto = new PruebasDTO();
-        dto.setId(campeonatosPruebas.getPruebas().getId());
-        dto.setNombre(campeonatosPruebas.getPruebas().getNombre());
-        dto.setDescripcion(campeonatosPruebas.getPruebas().getDescripcion());
-        dto.setTipo(campeonatosPruebas.getPruebas().getTipo());
-        dto.setCategoria(campeonatosPruebas.getPruebas().getCategoria());
+        //verificar
+        dto.setId(campeonatoPruebas.getPrueba().getId());
+        dto.setNombre(campeonatoPruebas.getPrueba().getNombre());
+        dto.setDescripcion(campeonatoPruebas.getPrueba().getDescripcion());
+        dto.setTipo(campeonatoPruebas.getPrueba().getTipo());
         return dto;
     }
 

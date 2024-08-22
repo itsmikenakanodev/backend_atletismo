@@ -48,4 +48,75 @@ public class Resultado {
     @JoinColumn(name = "championship_id")
     private Campeonato campeonato;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Duration getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Duration marca) {
+        this.marca = marca;
+    }
+
+    public BigDecimal getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(BigDecimal distancia) {
+        this.distancia = distancia;
+    }
+
+    public Integer getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(Integer posicion) {
+        this.posicion = posicion;
+    }
+
+    public Integer getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(Integer puntos) {
+        this.puntos = puntos;
+    }
+
+    public Integer getIntento() {
+        return intento;
+    }
+
+    public void setIntento(Integer intento) {
+        this.intento = intento;
+    }
+
+    public Competidor getCompetidor() {
+        return competidor;
+    }
+
+    public void setCompetidor(Competidor competidor) {
+        this.competidor = competidor;
+    }
+
+    public Prueba getPrueba() {
+        return prueba;
+    }
+
+    public void setPrueba(Prueba prueba) {
+        this.prueba = prueba;
+    }
+
+    public Campeonato getCampeonato() {
+        return campeonato;
+    }
+
+    public void setCampeonato(Campeonato campeonato) {
+        this.campeonato = campeonato;
+    }
 }

@@ -30,4 +30,36 @@ public class Competidor {
 
     @OneToMany(mappedBy = "competidor")
     private List<Resultado> resultados;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Campeonato getCampeonato() {
+        return campeonato;
+    }
+
+    public void setCampeonato(Campeonato campeonato) {
+        this.campeonato = campeonato;
+    }
+
+    public List<Resultado> getResultados() {
+        return resultados;
+    }
+
+    public void setResultados(List<Resultado> resultados) {
+        this.resultados = resultados;
+    }
 }

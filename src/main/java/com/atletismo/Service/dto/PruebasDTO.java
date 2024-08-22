@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class PruebasDTO {
-	
-	private Integer id;
+
+    private Integer id;
     private String nombre;
     private Integer intentos;
     private String tipo;
     private String descripcion;
     private String categoria;
-    
+
 }

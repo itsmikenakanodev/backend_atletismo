@@ -4,10 +4,7 @@ import com.atletismo.Repository.Modelo.Campeonato;
 import com.atletismo.Repository.Modelo.CampeonatoPrueba;
 import com.atletismo.Repository.Modelo.Competidor;
 import com.atletismo.Repository.Modelo.Usuario;
-import com.atletismo.Service.dto.CampeonatosDTO;
-import com.atletismo.Service.dto.CampeonatosPruebasDTO;
-import com.atletismo.Service.dto.CompetidoresDTO;
-import com.atletismo.Service.dto.PruebasDTO;
+import com.atletismo.Service.dto.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

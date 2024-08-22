@@ -26,27 +26,4 @@ public class CampeonatoPrueba {
     @JoinColumn(name = "event_id")
     private Prueba prueba;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Campeonato getCampeonato() {
-        return campeonato;
-    }
-
-    public void setCampeonato(Campeonato campeonato) {
-        this.campeonato = campeonato;
-    }
-
-    public Prueba getPrueba() {
-        return prueba;
-    }
-
-    public void setPrueba(Prueba prueba) {
-        this.prueba = prueba;
-    }
 }

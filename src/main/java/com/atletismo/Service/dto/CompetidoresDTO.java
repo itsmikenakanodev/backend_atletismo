@@ -1,10 +1,6 @@
 package com.atletismo.Service.dto;
 
 import com.atletismo.Repository.Modelo.Resultado;
-import com.cloud.backend.project.repository.modelo.AsociacionesDeportivas;
-import com.cloud.backend.project.repository.modelo.CampeonatosCompetidores;
-import com.cloud.backend.project.repository.modelo.CompetidoresPruebas;
-import com.cloud.backend.project.repository.modelo.Resultados;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

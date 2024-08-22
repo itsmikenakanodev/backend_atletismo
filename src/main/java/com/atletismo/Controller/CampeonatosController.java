@@ -2,10 +2,8 @@ package com.atletismo.Controller;
 
 import com.atletismo.Repository.Modelo.Campeonato;
 import com.atletismo.Service.ICampeonatoService;
-import com.cloud.backend.project.repository.modelo.Campeonatos;
-import com.cloud.backend.project.service.ICampeonatosService;
-import com.cloud.backend.project.service.dto.CampeonatosDTO;
-import com.cloud.backend.project.service.dto.PruebasDTO;
+import com.atletismo.Service.dto.CampeonatosDTO;
+import com.atletismo.Service.dto.PruebasDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

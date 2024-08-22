@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -19,6 +20,12 @@ public class Competidor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "inscription_date")
+    private Date fechaInscripcion;
+
+    @Column(name = "status")
+    private String estadoParticipacion;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

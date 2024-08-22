@@ -3,9 +3,11 @@ package com.atletismo.Service;
 import com.atletismo.Repository.IPruebasRepository;
 import com.atletismo.Repository.Modelo.Prueba;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PruebaServiceImpl implements IPruebasService{
 
     @Autowired

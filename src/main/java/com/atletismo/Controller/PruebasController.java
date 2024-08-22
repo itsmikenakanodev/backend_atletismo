@@ -16,6 +16,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/pruebas")
 public class PruebasController {
+
     @Autowired
     private IPruebasService pruebasService;
 

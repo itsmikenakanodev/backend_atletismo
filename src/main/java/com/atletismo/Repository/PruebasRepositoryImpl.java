@@ -61,7 +61,7 @@ public class PruebasRepositoryImpl implements IPruebasRepository{
 
     @Override
     public List<Prueba> buscarTodas() {
-        TypedQuery<Prueba> myQ = this.entityManager.createQuery("SELECT p FROM Pruebas p",Pruebas.class);
+        TypedQuery<Prueba> myQ = this.entityManager.createQuery("SELECT p FROM Prueba p",Prueba.class);
         return myQ.getResultList();
     }
 }

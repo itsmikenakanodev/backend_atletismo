@@ -24,6 +24,4 @@ public class UsuarioDocumentoDTO {
     private Boolean estado;
     private Date fechaSuscripción;
     private Documentos documento;
-
-
 }

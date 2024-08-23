@@ -38,6 +38,7 @@ public class Competidor {
     private Campeonato campeonato;
 
     @OneToMany(mappedBy = "competidor",fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Resultado> resultados;
 
 }

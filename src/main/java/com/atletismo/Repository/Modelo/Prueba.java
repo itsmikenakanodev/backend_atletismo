@@ -31,9 +31,11 @@ public class Prueba {
     private String descripcion;
 
     @OneToMany(mappedBy = "prueba")
+    @JsonIgnore
     private List<CampeonatoPrueba> campeonatoPruebas;
 
     @OneToMany(mappedBy = "prueba")
+    @JsonIgnore
     private List<Resultado> resultados;
 
 }

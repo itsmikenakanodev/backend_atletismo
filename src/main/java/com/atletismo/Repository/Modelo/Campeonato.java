@@ -1,5 +1,6 @@
 package com.atletismo.Repository.Modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,12 +41,15 @@ public class Campeonato {
 	private LocalDate inscripcionFin;
 
 	@OneToMany(mappedBy = "campeonato")
+	@JsonIgnore
 	private List<CampeonatoPrueba> campeonatoPruebas;
 
 	@OneToMany(mappedBy = "campeonato")
+	@JsonIgnore
 	private List<Competidor> competidores;
 
 	@OneToMany(mappedBy = "campeonato")
+	@JsonIgnore
 	private List<Resultado> resultados;
 
 }

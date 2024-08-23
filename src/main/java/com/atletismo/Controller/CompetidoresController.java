@@ -34,7 +34,8 @@ public class CompetidoresController {
     }
 	
 	@PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Boolean> actualizarCompetidor(@RequestBody Competidor Competidor) {
+	public ResponseEntity<Boolean> actualizarCompetidor(@PathVariable Integer id, @RequestBody Competidor Competidor) {
+        Competidor.setId(id);
         boolean actualizado = this.competidoresService.actualizar(Competidor);
         return ResponseEntity.status(actualizado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(actualizado);
     }

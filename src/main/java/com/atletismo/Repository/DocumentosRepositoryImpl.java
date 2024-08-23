@@ -19,11 +19,14 @@ public class DocumentosRepositoryImpl implements IDocumentosRepo {
 
     @Override
     public Boolean insertarDocumentos(Documentos documentos) {
-        try{
+        try {
             this.em.persist(documentos);
             return true;
-        }catch(Exception e){
-            return false;
+        } catch (Exception e) {
+            // Log la excepción para depurar
+            e.printStackTrace();
+            // Podrías relanzar la excepción si es necesario
+            throw e;
         }
     }
 
@@ -56,7 +59,7 @@ public class DocumentosRepositoryImpl implements IDocumentosRepo {
     @Override
     public List<Documentos> buscarDocumentosDeUsuarioDadoId(Integer id) {
         try {
-            String sql = "SELECT d FROM Documentos d WHERE d.usuarios.id = :id";
+            String sql = "SELECT d FROM Documento d WHERE d.usuario.id = :id";
             Query myQuery = this.em.createQuery(sql);
             myQuery.setParameter("id", id);
 		    return myQuery.getResultList(); 

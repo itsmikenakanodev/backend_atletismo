@@ -34,5 +34,4 @@ public class Documentos {
     @JoinColumn(name = "usua_id")
     private Usuario usuario;
 
-
 }

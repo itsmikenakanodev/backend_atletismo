@@ -48,5 +48,4 @@ public class Resultado {
     @JoinColumn(name = "championship_id")
     private Campeonato campeonato;
 
-
 }

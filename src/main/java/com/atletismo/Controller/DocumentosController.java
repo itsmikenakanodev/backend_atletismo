@@ -17,10 +17,8 @@ import java.util.List;
 @RequestMapping("/documentos")
 public class DocumentosController {
 
-	
 	@Autowired
 	private IDocumetosService documetosService;
-	
 	
 	@GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Documentos>buscarDocumentosId(@PathVariable Integer id) {
@@ -33,16 +31,18 @@ public class DocumentosController {
         return new ResponseEntity<>(this.documetosService.insertarDocumentos(documentos), null, HttpStatus.OK);
     }
 
-	
+
 	@PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Boolean> actualizarDocumento(@RequestBody Documentos documento) {
-        boolean actualizado = this.documetosService.actualizarDocumentos(documento);
-        return ResponseEntity.status(actualizado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(actualizado);
-    }
-   
-    
-    
-    @DeleteMapping(path="/{id}")
+	public ResponseEntity<Boolean> actualizarDocumento(@PathVariable Integer id, @RequestBody Documentos documento) {
+		documento.setId(id);
+		boolean actualizado = this.documetosService.actualizarDocumentos(documento);
+		return ResponseEntity.status(actualizado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(actualizado);
+	}
+
+
+
+
+	@DeleteMapping(path="/{id}")
     public ResponseEntity<Boolean> eliminarDocumentoPorId(@PathVariable Integer id) {
         boolean resultado = this.documetosService.eliminarDocumentos(id);
         return ResponseEntity.status(resultado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(resultado);

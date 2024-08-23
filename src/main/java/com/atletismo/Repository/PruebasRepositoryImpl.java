@@ -18,7 +18,9 @@ public class PruebasRepositoryImpl implements IPruebasRepository{
     @Override
     public Boolean insertar(Prueba pruebas) {
         // TODO Auto-generated method stub
+        System.out.println("Insertando prueba: " + pruebas);
         try {
+
             this.entityManager.persist(pruebas);
             return true;
         }catch (Exception e) {

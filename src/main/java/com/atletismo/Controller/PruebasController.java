@@ -26,7 +26,8 @@ public class PruebasController {
     }
 
     @PutMapping(path = "/{id}")//, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> actualizarPruebas(@RequestBody Prueba pruebas){
+    public ResponseEntity<Boolean> actualizarPruebas(@PathVariable Integer id, @RequestBody Prueba pruebas){
+        pruebas.setId(id);
         boolean actualizado = this.pruebasService.actualizar(pruebas);
         return ResponseEntity.status(actualizado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(actualizado);
     }

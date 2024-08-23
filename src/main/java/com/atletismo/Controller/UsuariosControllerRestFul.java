@@ -63,6 +63,7 @@ public class UsuariosControllerRestFul {
 
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Boolean> actualizarPorId(@RequestBody Usuario usuario, @PathVariable Integer id) {
+        usuario.setId(id);
         return new ResponseEntity<>(this.usuariosService.actualizar(usuario), null, HttpStatus.OK);
 	}
 

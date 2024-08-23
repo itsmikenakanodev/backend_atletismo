@@ -18,21 +18,21 @@ public class ResultadosServiceImpl implements IResultadosService {
 	}
 
 	@Override
-	public void insertarResultado(Resultado resultados) {
+	public Boolean insertarResultado(Resultado resultados) {
 		// TODO Auto-generated method stub
-		this.resultadosRepository.insertar(resultados);
+		return this.resultadosRepository.insertar(resultados);
 	}
 
 	@Override
-	public void actualizarResultado(Resultado resultados) {
+	public Boolean actualizarResultado(Resultado resultados) {
 		// TODO Auto-generated method stub
-		this.resultadosRepository.actualizar(resultados);
+		return this.resultadosRepository.actualizar(resultados);
 	}
 
 	@Override
-	public void eliminarResultado(Integer id) {
+	public Boolean eliminarResultado(Integer id) {
 		// TODO Auto-generated method stub
-		this.resultadosRepository.eliminar(id);
+		return this.resultadosRepository.eliminar(id);
 	}
 
 }

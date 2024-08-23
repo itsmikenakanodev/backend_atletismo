@@ -20,21 +20,39 @@ public class ResultadosRepositoryImpl implements IResultadosRepository {
 	}
 
 	@Override
-	public void insertar(Resultado resultados) {
+	public Boolean insertar(Resultado resultados) {
 		// TODO Auto-generated method stub
-		this.entityManager.persist(resultados);
+		try {
+			this.entityManager.persist(resultados);
+			return true;
+		}catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 
 	@Override
-	public void actualizar(Resultado resultados) {
+	public Boolean actualizar(Resultado resultados) {
 		// TODO Auto-generated method stub
-		this.entityManager.merge(resultados);
+		try {
+			this.entityManager.merge(resultados);
+			return true;
+		}catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 
 	@Override
-	public void eliminar(Integer id) {
+	public Boolean eliminar(Integer id) {
 		// TODO Auto-generated method stub
-		this.entityManager.remove(this.buscarId(id));
+		try {
+			this.entityManager.remove(this.buscarId(id));
+			return true;
+		}catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 
 }

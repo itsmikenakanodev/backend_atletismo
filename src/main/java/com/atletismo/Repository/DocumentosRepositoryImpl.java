@@ -59,7 +59,7 @@ public class DocumentosRepositoryImpl implements IDocumentosRepo {
     @Override
     public List<Documentos> buscarDocumentosDeUsuarioDadoId(Integer id) {
         try {
-            String sql = "SELECT d FROM Documento d WHERE d.usuario.id = :id";
+            String sql = "SELECT d FROM Documentos d WHERE d.usuario.id = :id";
             Query myQuery = this.em.createQuery(sql);
             myQuery.setParameter("id", id);
 		    return myQuery.getResultList(); 

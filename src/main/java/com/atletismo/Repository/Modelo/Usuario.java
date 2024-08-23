@@ -67,6 +67,7 @@ public class Usuario {
     private Rol rol;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
     private List<Documentos> documentos;
 
     @OneToMany(mappedBy = "usuario")

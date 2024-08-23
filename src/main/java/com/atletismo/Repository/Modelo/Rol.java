@@ -1,5 +1,6 @@
 package com.atletismo.Repository.Modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +28,7 @@ public class Rol {
     private String codigo;
 
     @OneToMany(mappedBy = "rol")
+    @JsonIgnore
     private List<Usuario> usuarios;
-
 
 }

@@ -1,5 +1,6 @@
 package com.atletismo.Repository.Modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,9 +34,10 @@ public class Competidor {
 
     @ManyToOne
     @JoinColumn(name = "championship_id")
+    @JsonIgnore
     private Campeonato campeonato;
 
-    @OneToMany(mappedBy = "competidor")
+    @OneToMany(mappedBy = "competidor",fetch = FetchType.LAZY)
     private List<Resultado> resultados;
 
 }

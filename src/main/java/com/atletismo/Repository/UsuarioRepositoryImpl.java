@@ -109,7 +109,7 @@ public class UsuarioRepositoryImpl implements IUsuariosRepository{
 
         try {
             String sql = "SELECT new UsuarioDocumentoDTO(u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, u.estado, u.fechaSuscripción, d) " +
-                    "FROM Documentos d JOIN d.usuarios u WHERE d.tipo = :tipoDoc AND u.ciudad = :ciudad";
+                    "FROM Documentos d JOIN d.usuario u WHERE d.tipo = :tipoDoc AND u.ciudad = :ciudad";
 
             if ("Socio".equals(tipoDoc)) {
                 sql += " AND u.estado = :estado";

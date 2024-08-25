@@ -25,7 +25,8 @@ public class CampeonatosPruebasImpl implements ICampeonatosPruebas {
 		} catch (Exception e) {
 			// TODO: handle exception
 			return false;
-		}	}
+		}
+	}
 
 	@Override
 	public Boolean actualizar(CampeonatoPrueba campeonatoPrueba) {
@@ -60,7 +61,7 @@ public class CampeonatosPruebasImpl implements ICampeonatosPruebas {
 	@Override
 	public List<CampeonatoPrueba> buscarPorIdCampeonatos(Integer idCampeonato) {
 			// TODO Auto-generated method stub
-			TypedQuery<CampeonatoPrueba> myQ = this.entityManager.createQuery("SELECT c FROM CampeonatosPruebas c WHERE c.campeonatos.id = :idCampeonato", CampeonatoPrueba.class);
+			TypedQuery<CampeonatoPrueba> myQ = this.entityManager.createQuery("SELECT c FROM CampeonatoPrueba c WHERE c.campeonato.id = :idCampeonato", CampeonatoPrueba.class);
 			myQ.setParameter("idCampeonato", idCampeonato);
 			return myQ.getResultList();
 	}
@@ -68,7 +69,7 @@ public class CampeonatosPruebasImpl implements ICampeonatosPruebas {
 	@Override
 	public List<CampeonatoPrueba> obtenerTodos() {
 		// TODO Auto-generated method stub
-		TypedQuery<CampeonatoPrueba> myQ = this.entityManager.createQuery("SELECT c FROM CampeonatosPruebas c",CampeonatoPrueba.class);
+		TypedQuery<CampeonatoPrueba> myQ = this.entityManager.createQuery("SELECT c FROM CampeonatoPrueba c",CampeonatoPrueba.class);
 		return myQ.getResultList();
 	}
 

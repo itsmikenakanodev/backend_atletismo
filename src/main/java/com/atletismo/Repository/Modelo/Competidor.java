@@ -34,7 +34,6 @@ public class Competidor {
 
     @ManyToOne
     @JoinColumn(name = "championship_id")
-    @JsonIgnore
     private Campeonato campeonato;
 
     @OneToMany(mappedBy = "competidor",fetch = FetchType.LAZY)

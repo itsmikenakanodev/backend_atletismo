@@ -41,7 +41,6 @@ public class Campeonato {
 	private LocalDate inscripcionFin;
 
 	@OneToMany(mappedBy = "campeonato")
-	@JsonIgnore
 	private List<CampeonatoPrueba> campeonatoPruebas;
 
 	@OneToMany(mappedBy = "campeonato")

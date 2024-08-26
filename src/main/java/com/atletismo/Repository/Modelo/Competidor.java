@@ -28,6 +28,9 @@ public class Competidor {
     @Column(name = "status")
     private String estadoParticipacion;
 
+    @Column(name = "category")
+    private String categoria;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Usuario usuario;

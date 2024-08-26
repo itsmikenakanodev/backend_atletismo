@@ -1,6 +1,7 @@
 package com.atletismo.Repository;
 
 import com.atletismo.Service.dto.CampeonatoCompetidorCountDTO;
+import com.atletismo.Service.dto.CompetidorDetalleDTO;
 import com.atletismo.Service.dto.EventoCompetidorCountDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -49,6 +50,29 @@ public class ReportesRepositoryImpl implements IReportesRepository{
 
         TypedQuery<EventoCompetidorCountDTO> query = entityManager.createQuery(sql, EventoCompetidorCountDTO.class);
         query.setParameter("campeonatoId", idCampeonato);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<CompetidorDetalleDTO> obtenerDetalleCompetidoresPorCampeonato(Integer idCampeonato) {
+        String sql = "SELECT new com.atletismo.Service.dto.CompetidorDetalleDTO(" +
+                "e.nombre, " +
+                "u.nombres, " +
+                "u.apellidos, " +
+                "u.ciudad, " +
+                "u.sexo, " +
+                "comp.categoria, " +
+                "u.estado) " +
+                "FROM Campeonato c " +
+                "JOIN Competidor comp ON c.id = comp.campeonato.id " +
+                "JOIN Usuario u ON comp.usuario.id = u.id " +
+                "JOIN Resultado cr ON comp.id = cr.competidor.id " +
+                "JOIN Prueba e ON cr.prueba.id = e.id " +
+                "WHERE comp.estadoParticipacion = 'Pendiente' AND c.id = :idCampeonato " +
+                "ORDER BY e.nombre, u.sexo, comp.categoria";
+
+        TypedQuery<CompetidorDetalleDTO> query = entityManager.createQuery(sql, CompetidorDetalleDTO.class);
+        query.setParameter("idCampeonato", idCampeonato);
         return query.getResultList();
     }
 }

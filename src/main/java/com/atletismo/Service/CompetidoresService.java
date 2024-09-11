@@ -84,8 +84,8 @@ public class CompetidoresService implements ICompetidoresService{
     }
 
     @Override
-    public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(Boolean estado, String estadoParticipacion, String ciudad) {
-        return  this.competidoresRepository.listarCompetidoresPorEstadoYCiudad(estado,estadoParticipacion, ciudad);
+    public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(String estadoParticipacion, String ciudad) {
+        return  this.competidoresRepository.listarCompetidoresPorEstadoYCiudad(estadoParticipacion, ciudad);
     }
 
 

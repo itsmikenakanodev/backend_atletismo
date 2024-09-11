@@ -39,7 +39,7 @@ public class Competidor {
     @JoinColumn(name = "championship_id")
     private Campeonato campeonato;
 
-    @OneToMany(mappedBy = "competidor",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "competidor",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Resultado> resultados;
 

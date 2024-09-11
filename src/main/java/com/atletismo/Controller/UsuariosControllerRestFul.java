@@ -102,7 +102,7 @@ public class UsuariosControllerRestFul {
     @PostMapping(path = "/tipoD",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UsuarioDocumentoDTO>> listarPorProvinciaPorTipoDoc(@RequestBody ConsultaTipoDocDTO tipo){
 
-        return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(tipo.getEstado(), tipo.getTipo(), tipo.getCiudad()),null,HttpStatus.OK);
+        return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(tipo.getEstadoUsuario(), tipo.getTipo(), tipo.getCiudad()),null,HttpStatus.OK);
     }
 
     @GetMapping("/buscar")

@@ -13,5 +13,5 @@ public interface ICompetidoresRepository {
 	
 	List<Competidor> listarCompetidores();
 
-	public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(Boolean estado, String estadoParticipacion, String ciudad);
+	public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(String estadoParticipacion, String ciudad);
 }

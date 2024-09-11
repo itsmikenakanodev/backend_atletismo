@@ -17,7 +17,7 @@ public interface ICompetidoresService {
 	List<Competidor> listarCompetidores();
 	List<CompetidoresDTO> listarCompetidoresDTO();
 	public Boolean actualizarEstado(Integer id, String nuevoEstado);
-	public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(Boolean estado, String estadoParticipacion, String ciudad);
+	public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(String estadoParticipacion, String ciudad);
 
 
 }

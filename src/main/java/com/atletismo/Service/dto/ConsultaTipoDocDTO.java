@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ConsultaTipoDocDTO {
+    private Boolean estadoUsuario;
     private String tipo;
-    private Boolean estado;
+    private String estado;
     private String ciudad;
 }

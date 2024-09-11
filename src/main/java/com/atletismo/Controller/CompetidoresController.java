@@ -50,7 +50,7 @@ public class CompetidoresController {
     @PostMapping(path = "/tipoCompetidor",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CompetidoresEstadoDTO>> listarCompetidores(@RequestBody ConsultaTipoDocDTO tipo){
 
-        return new ResponseEntity<>(this.competidoresService.listarCompetidoresPorEstadoYCiudad(tipo.getEstado(), tipo.getTipo(), tipo.getCiudad()),null,HttpStatus.OK);
+        return new ResponseEntity<>(this.competidoresService.listarCompetidoresPorEstadoYCiudad(tipo.getTipo(), tipo.getCiudad()),null,HttpStatus.OK);
     }
 
     

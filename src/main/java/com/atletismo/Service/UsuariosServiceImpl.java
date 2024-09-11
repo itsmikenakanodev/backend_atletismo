@@ -94,5 +94,13 @@ public class UsuariosServiceImpl implements IUsuariosService{
         return this.usuariosRepository.listarCiudadPorTipoDocumento(estado, tipoDoc, provincia);
     }
 
+    public List<Usuario> buscarUsuariosAprobadosPorApellidoOCedula(String apellido, String cedula) {
+        if ((apellido == null || apellido.isEmpty()) && (cedula == null || cedula.isEmpty())) {
+            throw new IllegalArgumentException("Debe proporcionar al menos un apellido o una cédula.");
+        }
+
+        return usuariosRepository.buscarUsuariosAprobadosPorApellidoOCedula(apellido, cedula);
+    }
+
 
 }

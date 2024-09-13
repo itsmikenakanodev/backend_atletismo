@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -104,10 +105,26 @@ public class UsuariosControllerRestFul {
         return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(tipo.getEstadoUsuario(), tipo.getTipo(), tipo.getCiudad()),null,HttpStatus.OK);
     }
 
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Usuario>> buscarUsuarios(
+            @RequestParam(value = "apellidos", required = false) String apellidos,
+            @RequestParam(value = "cedula", required = false) String cedula) {
+
+        // Validar que al menos uno de los parámetros esté presente
+        if ((apellidos == null || apellidos.isEmpty()) && (cedula == null || cedula.isEmpty())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); // O cualquier otro manejo adecuado
+        }
+
+        List<Usuario> usuarios = usuariosService.buscarUsuariosAprobadosPorApellidoOCedula(apellidos, cedula);
+        return new ResponseEntity<>(usuarios, HttpStatus.OK);
+    }
+
     /////////////////////administradores//////////////////////
     @GetMapping(path = "/admins",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Usuario>> listarUsuariosAdmin(){
         return new ResponseEntity<>(this.usuariosService.buscarTodosUsuariosAdmin(),null,HttpStatus.OK);
     }
+
+
 
 }

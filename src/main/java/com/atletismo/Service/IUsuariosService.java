@@ -24,4 +24,6 @@ public interface IUsuariosService {
 
     public List<UsuarioDocumentoDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia);
 
+    public List<Usuario> buscarUsuariosAprobadosPorApellidoOCedula(String apellido, String cedula);
+
 }

@@ -25,6 +25,6 @@ public class UsuarioDTO {
     private Boolean estado;
     private Date fechaSuscripción;
     private List<Documentos> documento;
-
+    private String cedula;
 
 }

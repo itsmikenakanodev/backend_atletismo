@@ -1,6 +1,5 @@
 package com.atletismo.Repository.Modelo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,20 +11,27 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name="championship_events")
-public class CampeonatoPrueba {
+@Table(name="championship_files")
+public class DocumentoCampeonato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "championship_id")
-    @JsonIgnore
-    private Campeonato campeonato;
+    @Column(name = "name")
+    private String nombre;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Prueba prueba;
+    @Column(name = "file_url")
+    private String link;
+
+    @Column(name = "extension")
+    private String extension;
+
+    @Column(name = "type")
+    private String tipo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "championship_id")
+    private Campeonato campeonato;
 
 }

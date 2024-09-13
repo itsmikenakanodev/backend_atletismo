@@ -1,6 +1,7 @@
 package com.atletismo.Repository;
 
 import com.atletismo.Repository.Modelo.Campeonato;
+import com.atletismo.Repository.Modelo.DocumentoCampeonato;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;

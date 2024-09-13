@@ -51,4 +51,7 @@ public class Campeonato {
 	@JsonIgnore
 	private List<Resultado> resultados;
 
+	@OneToMany(mappedBy = "campeonato", cascade = CascadeType.ALL)
+	private List<DocumentoCampeonato> documentos;
+
 }

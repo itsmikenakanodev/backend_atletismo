@@ -4,6 +4,7 @@ import com.atletismo.Repository.ICampeonatosRepository;
 import com.atletismo.Repository.IPruebasRepository;
 import com.atletismo.Repository.Modelo.Campeonato;
 import com.atletismo.Repository.Modelo.CampeonatoPrueba;
+import com.atletismo.Repository.Modelo.DocumentoCampeonato;
 import com.atletismo.Service.dto.CampeonatosDTO;
 import com.atletismo.Service.dto.PruebasDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,11 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public Boolean guarCampeonatos(Campeonato campeonato) {
+        if(!campeonato.getDocumentos().isEmpty()){
+            for (DocumentoCampeonato documento : campeonato.getDocumentos()) {
+                documento.setCampeonato(campeonato);
+            }
+        }
         return this.campeonatosRepo.guardarCampeonatos(campeonato);
     }
 

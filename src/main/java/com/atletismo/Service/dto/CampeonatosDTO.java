@@ -1,6 +1,7 @@
 package com.atletismo.Service.dto;
 
 
+import com.atletismo.Repository.Modelo.DocumentoCampeonato;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +26,6 @@ public class CampeonatosDTO {
     private LocalDate fechaFin;
     private LocalDate inscripcionInicio;
     private LocalDate inscripcionFin;
-    private List<PruebasDTO> pruebas;  
-
+    private List<PruebasDTO> pruebas;
+    private List<DocumentoCampeonato> documentos;
 }

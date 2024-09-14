@@ -125,6 +125,7 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
                 .inscripcionInicio(campeonato.getInscripcionInicio())
                 .inscripcionFin(campeonato.getInscripcionFin())
                 .pruebas(pruebas)
+                .documentos(campeonato.getDocumentos())
                 .build();
 
 

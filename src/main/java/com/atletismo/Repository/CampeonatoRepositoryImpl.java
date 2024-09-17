@@ -22,8 +22,12 @@ public class CampeonatoRepositoryImpl implements ICampeonatosRepository{
     public Boolean actualizarCampeonatos(Campeonato campeonato) {
         try{
             Campeonato camp = this.buscarPorId(campeonato.getId());
-            campeonato.setId(camp.getId());
-            this.em.merge(campeonato);
+            camp.setNombre(campeonato.getNombre());
+            camp.setFechaFin(campeonato.getFechaFin());
+            camp.setFechaInicio(campeonato.getFechaInicio());
+            camp.setInscripcionInicio(campeonato.getInscripcionInicio());
+            camp.setInscripcionFin(campeonato.getInscripcionFin());
+            this.em.merge(camp);
             return true;
         }catch(Exception e){
             e.getMessage();

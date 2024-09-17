@@ -7,6 +7,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public class DocumentoCampeonatoRepositoryImpl implements IDocumentoCampeonatoRepository {
@@ -48,5 +50,12 @@ public class DocumentoCampeonatoRepositoryImpl implements IDocumentoCampeonatoRe
     @Override
     public DocumentoCampeonato buscarDocumentos(Integer id) {
         return this.em.find(DocumentoCampeonato.class, id);
+    }
+
+    @Override
+    public List<DocumentoCampeonato> findByCampeonatoId(Integer campeonatoId) {
+        return em.createQuery("SELECT d FROM DocumentoCampeonato d WHERE d.campeonato.id = :campeonatoId", DocumentoCampeonato.class)
+                .setParameter("campeonatoId", campeonatoId)
+                .getResultList();
     }
 }

@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/documentos/campeonatos")
@@ -39,5 +41,15 @@ public class DocumentoCampeonatoController {
     public ResponseEntity<Boolean> eliminarDocumentoPorId(@PathVariable Integer id) {
         boolean resultado = this.documentosService.eliminarDocumentos(id);
         return ResponseEntity.status(resultado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(resultado);
+    }
+
+    @GetMapping(path = "/campeonato/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<DocumentoCampeonato>> obtenerDocumentosPorCampeonato(@PathVariable Integer id) {
+        try {
+            List<DocumentoCampeonato> documentos = this.documentosService.obtenerDocumentosPorCampeonato(id);
+            return new ResponseEntity<>(documentos, HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

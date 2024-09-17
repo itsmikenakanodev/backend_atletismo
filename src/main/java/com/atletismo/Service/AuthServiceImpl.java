@@ -107,4 +107,6 @@ public class AuthServiceImpl implements IAuthService{
     }
 
 
+    public static interface IMensajeService {
+    }
 }

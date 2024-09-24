@@ -81,6 +81,7 @@ public class AuthServiceImpl implements IAuthService{
                         .telefono(registroRequest.getTelefono())
                         .estado(false)
                         .estadoRegistro(false)
+                        .cedula(registroRequest.getCedula())
                     .build();
                     this.usuariosRepository.insertar(usua);
                     flag=usua.getId();

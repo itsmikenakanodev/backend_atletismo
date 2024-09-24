@@ -22,6 +22,7 @@ public class RegistroRequest implements Serializable{
     private String ciudad;
     private String email;
     private String telefono;
+    private String cedula;
     private String contactoNombre;
     private String contactoTelefono;
     private String password;

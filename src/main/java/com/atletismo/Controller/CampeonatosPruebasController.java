@@ -2,6 +2,7 @@ package com.atletismo.Controller;
 
 import com.atletismo.Repository.Modelo.CampeonatoPrueba;
 import com.atletismo.Service.ICampeonatosPruebasService;
+import com.atletismo.Service.dto.CampeonatoPruebaDTO;
 import com.atletismo.Service.dto.CampeonatosPruebasDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,10 @@ public class CampeonatosPruebasController {
 
     // POST
     @PostMapping(consumes = "application/json")
-    public boolean insertar(@RequestBody CampeonatoPrueba campeonatoPrueba) {
+    public boolean insertar(@RequestBody CampeonatoPruebaDTO campeonatoPruebaDto) {
+        CampeonatoPrueba campeonatoPrueba = new CampeonatoPrueba();
+        campeonatoPrueba.setCampeonato(campeonatoPruebaDto.getCampeonato());
+        campeonatoPrueba.setPrueba(campeonatoPruebaDto.getPrueba());
         return this.campeonatosPruebasService.insertar(campeonatoPrueba);
     }
 

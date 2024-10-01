@@ -74,7 +74,7 @@ public class CampeonatoRepositoryImpl implements ICampeonatosRepository{
 
     @Override
     public List<Campeonato> listarCampeonatos() {
-        TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonato c WHERE c.inscripcionInicio >= :fechaActual  OR c.fechaFin BETWEEN :fechaActualMinus2 AND :fechaActual",Campeonato.class);
+        TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonato c WHERE c.fechaFin >= :fechaActualMinus2 OR c.fechaFin BETWEEN :fechaActualMinus2 AND :fechaActual",Campeonato.class);
         myQ.setParameter("fechaActual", LocalDate.now());
         myQ.setParameter("fechaActualMinus2", LocalDate.now().minusDays(2));
         return myQ.getResultList();

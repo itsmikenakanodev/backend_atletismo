@@ -26,7 +26,7 @@ public class Usuario {
     @Column(name = "last_name")
     private String apellidos;
 
-    @Column(name = "cedula", unique = true, nullable = false)
+    @Column(name = "cedula", unique = true)
     private String cedula;
 
     @Column(name = "address")

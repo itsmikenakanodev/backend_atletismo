@@ -57,6 +57,9 @@ public class UsuariosControllerRestFul {
     public ResponseEntity<Integer> insertarUsuario(@RequestBody Usuario usuario) {
         var roles = this.rolesService.buscar(5);
         System.out.println(roles);
+        if (usuario.getCedula() == null) {
+            throw new IllegalArgumentException("Cédula no puede ser nula");
+        }
        // usuario.setRoles(roles);
        // return new ResponseEntity<>(this.usuariosService.insertar(usuario), null, HttpStatus.OK);
        return null;

@@ -5,6 +5,7 @@ import com.atletismo.Service.ICampeonatosPruebasService;
 import com.atletismo.Service.dto.CampeonatoPruebaDTO;
 import com.atletismo.Service.dto.CampeonatosPruebasDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,5 +69,20 @@ public class CampeonatosPruebasController {
         });
 
         return ResponseEntity.of(Optional.ofNullable(dtos));
+    }
+
+
+    @DeleteMapping("/{campeonatoId}/{pruebaId}")
+    public ResponseEntity<String> eliminarCampeonatoPrueba(
+            @PathVariable Integer campeonatoId,
+            @PathVariable Integer pruebaId) {
+        CampeonatoPrueba campeonatoPrueba = campeonatosPruebasService.findByCampeonatoIdAndPruebaId(campeonatoId, pruebaId);
+
+        if (campeonatoPrueba != null) {
+            campeonatosPruebasService.deleteByCampeonatoIdAndPruebaId(campeonatoId, pruebaId);
+            return ResponseEntity.ok("Relación Campeonato-Prueba eliminada con éxito.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Relación Campeonato-Prueba no encontrada.");
+        }
     }
 }

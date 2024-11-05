@@ -12,4 +12,9 @@ public interface ICampeonatosPruebas {
 	public List<CampeonatoPrueba> buscarPorIdCampeonatos(Integer idCampeonato);
 	public List<CampeonatoPrueba> obtenerTodos();
 
+
+	void deleteByCampeonatoIdAndPruebaId(Integer campeonatoId, Integer pruebaId);
+	CampeonatoPrueba findByCampeonatoIdAndPruebaId(Integer campeonatoId, Integer pruebaId);
+
+
 }

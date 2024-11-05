@@ -60,4 +60,12 @@ public class CampeonatosPruebasServiceImpl implements ICampeonatosPruebasService
        // return this.campeonatosPruebasRepository.obtenerTodos().stream().map(this::converter.).collect(Collectors.toList());
     }
 
+    public void deleteByCampeonatoIdAndPruebaId(Integer campeonatoId, Integer pruebaId) {
+        campeonatosPruebasRepository.deleteByCampeonatoIdAndPruebaId(campeonatoId, pruebaId);
+    }
+
+    public CampeonatoPrueba findByCampeonatoIdAndPruebaId(Integer campeonatoId, Integer pruebaId) {
+        return campeonatosPruebasRepository.findByCampeonatoIdAndPruebaId(campeonatoId, pruebaId);
+    }
+
 }

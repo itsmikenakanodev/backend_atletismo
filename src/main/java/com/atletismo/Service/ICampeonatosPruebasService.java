@@ -15,4 +15,7 @@ public interface ICampeonatosPruebasService {
 	public Boolean actualizar(CampeonatoPrueba campeonatosPruebas);
 	public Boolean eliminar(Integer id);
 	public List<CampeonatosPruebasDTO> obtenerTodos();
+
+	void deleteByCampeonatoIdAndPruebaId(Integer campeonatoId, Integer pruebaId);
+	CampeonatoPrueba findByCampeonatoIdAndPruebaId(Integer campeonatoId, Integer pruebaId);
 }

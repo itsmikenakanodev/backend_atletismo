@@ -21,6 +21,8 @@ public class UsuarioRepositoryImpl implements IUsuariosRepository{
 
     @Override
     public Usuario insertar(Usuario usuarios) {
+        TypedQuery<Integer> query = this.entityManager.createQuery("SELECT MAX(u.numeroSocio) FROM Usuario u", Integer.class);
+        usuarios.setNumeroSocio(query.getSingleResult()==null ? 1 : query.getSingleResult()+1);
         this.entityManager.persist(usuarios);
         return usuarios;
     }

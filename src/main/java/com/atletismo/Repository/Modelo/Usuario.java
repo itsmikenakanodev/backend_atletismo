@@ -59,6 +59,9 @@ public class Usuario {
     @Column(name = "is_member")
     private Boolean estado;
 
+    @Column(name = "member_number")
+    private Integer numeroSocio;
+
     @Column(name = "is_approved")
     private Boolean estadoRegistro;
 

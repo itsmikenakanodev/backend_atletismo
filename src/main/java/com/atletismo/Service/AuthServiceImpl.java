@@ -78,7 +78,7 @@ public class AuthServiceImpl implements IAuthService{
                         //.roles(Set.of(new Roles("Atleta",ERol.ATL)))
                         .sexo(registroRequest.getSexo())
                         .telefono(registroRequest.getTelefono())
-                        .estado(false)
+                        .estado(registroRequest.getEstado())
                         .estadoRegistro(registroRequest.getEstadoRegistro())
                         .cedula(registroRequest.getCedula())
                     .build();

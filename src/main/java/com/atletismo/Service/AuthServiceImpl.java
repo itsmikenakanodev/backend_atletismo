@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthServiceImpl implements IAuthService{
 
-
     @Autowired
     private IUsuariosRepository usuariosRepository;
 
@@ -80,7 +79,7 @@ public class AuthServiceImpl implements IAuthService{
                         .sexo(registroRequest.getSexo())
                         .telefono(registroRequest.getTelefono())
                         .estado(false)
-                        .estadoRegistro(false)
+                        .estadoRegistro(registroRequest.getEstadoRegistro())
                         .cedula(registroRequest.getCedula())
                     .build();
                     this.usuariosRepository.insertar(usua);
@@ -106,7 +105,6 @@ public class AuthServiceImpl implements IAuthService{
         }
 
     }
-
 
     public static interface IMensajeService {
     }

@@ -81,6 +81,16 @@ public class CampeonatoRepositoryImpl implements ICampeonatosRepository{
     }
 
     @Override
+    public List<Campeonato> listarCampeonatosPorMes(LocalDate fecha) {
+        System.out.println(fecha);
+        System.out.println(fecha.plusMonths(1));
+        TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonato c WHERE c.inscripcionInicio>= :fechaMinima AND c.fechaFin < :fechaMaxima",Campeonato.class);
+        myQ.setParameter("fechaMinima", fecha);
+        myQ.setParameter("fechaMaxima", fecha.plusMonths(1));
+        return myQ.getResultList();
+    }
+
+    @Override
     public List<Campeonato> listarCampeonatosProvincia(String provincia) {
         TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonato c WHERE c.sede = :provincia", Campeonato.class);
         myQ.setParameter("provincia", provincia);

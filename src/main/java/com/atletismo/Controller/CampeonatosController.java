@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -76,8 +77,20 @@ public class CampeonatosController {
         }catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
-       
+
     }
+
+    @GetMapping(path = "/filtrar",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosDtoPorFecha(@RequestParam int anio, @RequestParam int mes) {
+        try{
+            LocalDate fecha = LocalDate.of(anio, mes,1);
+            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosDto(fecha), null, HttpStatus.OK);
+        }catch(Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
+
+    }
+
     @GetMapping(path = "/dto/ligero",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosSinPruebasDto() {
         try{

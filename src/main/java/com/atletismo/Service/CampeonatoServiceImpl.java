@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -71,6 +72,13 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
     public List<CampeonatosDTO> listarCampeonatosDto() {
         // TODO Auto-generated method stub
         return campeonatosRepo.listarCampeonatos().stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    public List<CampeonatosDTO> listarCampeonatosDto(LocalDate fecha) {
+        // TODO Auto-generated method stub
+        return campeonatosRepo.listarCampeonatosPorMes(fecha).stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
     @Override

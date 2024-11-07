@@ -4,6 +4,7 @@ import com.atletismo.Repository.Modelo.Campeonato;
 import com.atletismo.Service.dto.CampeonatosDTO;
 import com.atletismo.Service.dto.PruebasDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ICampeonatoService {
@@ -21,6 +22,8 @@ public interface ICampeonatoService {
     int borrarCampenatos(Integer id);
 
     List<CampeonatosDTO> listarCampeonatosDto();
+
+    List<CampeonatosDTO> listarCampeonatosDto(LocalDate fecha);
 
     List<CampeonatosDTO> listarCampeonatosProvincia(String provincia);
 

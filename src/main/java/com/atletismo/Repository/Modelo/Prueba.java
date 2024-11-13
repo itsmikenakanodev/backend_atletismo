@@ -30,6 +30,9 @@ public class Prueba {
     @Column(name = "description")
     private String descripcion;
 
+    @Column(name = "criterion")
+    private String criterio;
+
     @OneToMany(mappedBy = "prueba")
     @JsonIgnore
     private List<CampeonatoPrueba> campeonatoPruebas;

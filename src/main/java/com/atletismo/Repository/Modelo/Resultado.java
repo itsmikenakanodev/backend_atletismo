@@ -31,7 +31,7 @@ public class Resultado {
     private Integer posicion;
 
     @Column(name = "result_points")
-    private Integer puntos;
+    private Integer puntaje;
 
     @Column(name = "attempt")
     private Integer intento;

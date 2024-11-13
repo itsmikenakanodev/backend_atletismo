@@ -63,7 +63,11 @@ public class ReportesRepositoryImpl implements IReportesRepository{
                 "u.ciudad, " +
                 "u.sexo, " +
                 "comp.categoria, " +
-                "u.estado) " +
+                "u.numeroSocio, " +
+                "cr.marca, " +
+                "cr.distancia, " +
+                "cr.posicion, " +
+                "cr.puntaje) " +
                 "FROM Campeonato c " +
                 "JOIN Competidor comp ON c.id = comp.campeonato.id " +
                 "JOIN Usuario u ON comp.usuario.id = u.id " +

@@ -1,15 +1,19 @@
-# Generar la imagen
-#   docker build -t app_books .
-#   docker tag usuario/app_authors
-# docker build -t usuario/app_books .
+# Stage 1: Build the JAR file
+FROM maven:3.8.6-openjdk-17 as builder
 
-FROM eclipse-temurin:21.0.3_9-jre-alpine
-
-RUN mkdir /app
 WORKDIR /app
 
-COPY /target/demo-0.0.1-SNAPSHOT.jar app.jar
+COPY . .
+
+RUN mvn package -DskipTests
+
+# Stage 2: Run the application
+FROM eclipse-temurin:21.0.3_9-jre-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/target/demo-0.0.1-SNAPSHOT.jar app.
 
 EXPOSE 8080
 
-CMD ["java","-jar","app.jar"]
+CMD ["java", "-jar", "app.jar"]

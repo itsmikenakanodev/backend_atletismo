@@ -32,6 +32,30 @@ public class AuthRestFullController {
         }
     }
 
+    /**
+     * Endpoint específico para el login de administradores desde la app Android.
+     * 
+     * @param loginRequest Credenciales del usuario (email y password)
+     * @return ResponseEntity con:
+     *         - 200 OK y datos del admin si el login es exitoso
+     *         - 403 FORBIDDEN si el usuario no tiene rol de administrador
+     *         - 401 UNAUTHORIZED si las credenciales son inválidas
+     */
+    @PostMapping("/login/admin")
+    public ResponseEntity<AuthResponse> loginAdmin(@RequestBody LoginRequest loginRequest) {
+        try {
+            AuthResponse response = authService.loginAdmin(loginRequest);
+            if (response != null) {
+                return ResponseEntity.ok(response);
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(null);
+        }
+    }
+
     @PostMapping("/registro")
     public ResponseEntity<Integer> registroUsuarioAtleta(@RequestBody RegistroRequest registroRequest) {
         Integer id = authService.registroUsuarioAtleta(registroRequest);

@@ -106,6 +106,34 @@ public class AuthServiceImpl implements IAuthService{
 
     }
 
-    public static interface IMensajeService {
+    /**
+     * Implementación del login para administradores en la app Android.
+     * Valida las credenciales y el rol del usuario.
+     * 
+     * @param loginRequest Credenciales del usuario
+     * @return AuthResponse con datos básicos si es exitoso, null si las credenciales son inválidas
+     * @throws RuntimeException con mensaje "Acceso denegado" si el rol no es administrador (1 o 6)
+     */
+    @Override
+    public AuthResponse loginAdmin(LoginRequest loginRequest) {
+        Usuario usua = this.usuariosRepository.buscarPorEmail(loginRequest.getEmail());
+        if(usua != null && this.encriptionService.verificarEncriptedText(usua.getPassword(), loginRequest.getPassword())) {
+            // Validar que sea un usuario admin (rol 1 o 2)
+            if(usua.getRol().getId() == 1 || usua.getRol().getId() == 6) {
+                return AuthResponse.builder()
+                    .id(usua.getId())
+                    .nombres(usua.getNombres())
+                    .apellidos(usua.getApellidos())
+                    .email(usua.getEmail())
+                    .estado(usua.getEstado())
+                    .estadoRegistro(usua.getEstadoRegistro())
+                    .rol(usua.getRol())
+                    .build();
+            } else {
+                throw new RuntimeException("Acceso denegado: Se requieren permisos de administrador");
+            }
+        }
+        return null;
     }
+
 }

@@ -1,8 +1,7 @@
 package com.atletismo.Controller;
 
-import com.atletismo.Repository.Modelo.Prueba;
+import com.atletismo.Service.dto.ResultadoDTO;
 import com.atletismo.Repository.Modelo.Resultado;
-import com.atletismo.Service.IPruebasService;
 import com.atletismo.Service.IResultadosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,5 +43,12 @@ public class ResultadosController {
         return new ResponseEntity<>(resultado,null,200);
     }
 
+    @GetMapping(path = "/campeonato/{idCampeonato}/prueba/{idPrueba}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ResultadoDTO>> buscarPorCampeonatoYPrueba(
+            @PathVariable Integer idCampeonato,
+            @PathVariable Integer idPrueba) {
+        List<ResultadoDTO> resultados = this.resultadosService.buscarPorCampeonatoYPrueba(idCampeonato, idPrueba);
+        return ResponseEntity.ok(resultados);
+    }
 
 }

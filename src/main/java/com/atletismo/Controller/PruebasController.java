@@ -8,9 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.atletismo.Repository.Modelo.Prueba;
-import com.atletismo.Service.IPruebasService;
-
-
 import java.util.List;
 @RestController
 @CrossOrigin

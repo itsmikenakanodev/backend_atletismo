@@ -2,6 +2,10 @@ package com.atletismo.Service;
 
 import com.atletismo.Repository.IResultadosRepository;
 import com.atletismo.Repository.Modelo.Resultado;
+import com.atletismo.Service.dto.ResultadoDTO;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +37,11 @@ public class ResultadosServiceImpl implements IResultadosService {
 	public Boolean eliminarResultado(Integer id) {
 		// TODO Auto-generated method stub
 		return this.resultadosRepository.eliminar(id);
+	}
+
+	@Override
+	public List<ResultadoDTO> buscarPorCampeonatoYPrueba(Integer idCampeonato, Integer idPrueba) {
+		return this.resultadosRepository.buscarPorCampeonatoYPrueba(idCampeonato, idPrueba);
 	}
 
 }

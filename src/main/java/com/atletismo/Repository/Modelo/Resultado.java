@@ -48,4 +48,16 @@ public class Resultado {
     @JoinColumn(name = "championship_id")
     private Campeonato campeonato;
 
+    public Resultado(Integer id, Duration marca, BigDecimal distancia, 
+                    Integer posicion, Integer puntaje, Integer intento,
+                    Competidor competidor) {
+        this.id = id;
+        this.marca = marca;
+        this.distancia = distancia;
+        this.posicion = posicion;
+        this.puntaje = puntaje;
+        this.intento = intento;
+        this.competidor = competidor;
+    }
+
 }

@@ -68,6 +68,7 @@ D:\WorkspaceWeb\Tesis\backend\backend_atletismo\src\main\java\com\atletismo\Serv
 D:\WorkspaceWeb\Tesis\backend\backend_atletismo\src\main\java\com\atletismo\Service\dto\EventoCompetidorCountDTO.java
 D:\WorkspaceWeb\Tesis\backend\backend_atletismo\src\main\java\com\atletismo\Service\dto\MensajeDTO.java
 D:\WorkspaceWeb\Tesis\backend\backend_atletismo\src\main\java\com\atletismo\Service\dto\PruebasDTO.java
+D:\WorkspaceWeb\Tesis\backend\backend_atletismo\src\main\java\com\atletismo\Service\dto\ResultadoDTO.java
 D:\WorkspaceWeb\Tesis\backend\backend_atletismo\src\main\java\com\atletismo\Service\dto\UsuarioDocumentoDTO.java
 D:\WorkspaceWeb\Tesis\backend\backend_atletismo\src\main\java\com\atletismo\Service\dto\UsuarioDTO.java
 D:\WorkspaceWeb\Tesis\backend\backend_atletismo\src\main\java\com\atletismo\Service\dto\utils\Converter.java

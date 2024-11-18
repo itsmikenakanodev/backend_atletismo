@@ -7,6 +7,7 @@ com\atletismo\Repository\Modelo\Resultado.class
 com\atletismo\Service\CompetidoresService.class
 com\atletismo\Repository\Modelo\AuthResponse$AuthResponseBuilder.class
 com\atletismo\Service\dto\CampeonatoCompetidorCountDTO.class
+com\atletismo\Service\dto\ResultadoDTO.class
 com\atletismo\Repository\ResultadosRepositoryImpl.class
 com\atletismo\Repository\Modelo\Rol$RolBuilder.class
 com\atletismo\Repository\PruebasRepositoryImpl.class
@@ -100,7 +101,6 @@ com\atletismo\Repository\ICampeonatosRepository.class
 com\atletismo\Service\IMensajeService.class
 com\atletismo\Controller\RolesController.class
 com\atletismo\Repository\Modelo\Documentos.class
-com\atletismo\Service\AuthServiceImpl$IMensajeService.class
 com\atletismo\Service\CampeonatoServiceImpl.class
 com\atletismo\Service\PruebaServiceImpl.class
 com\atletismo\Service\dto\UsuarioDocumentoDTO.class

@@ -21,16 +21,14 @@ public interface ICampeonatoService {
 
     int borrarCampenatos(Integer id);
 
-    List<CampeonatosDTO> listarCampeonatosDto();
+    List<CampeonatosDTO> listarCampeonatosSinPruebasDto(LocalDate fecha);
 
-    List<CampeonatosDTO> listarCampeonatosDto(LocalDate fecha);
+    List<CampeonatosDTO> listarCampeonatosConPruebasDto(LocalDate fecha);
 
     List<CampeonatosDTO> listarCampeonatosProvincia(String provincia);
 
     Boolean agregarPruebas(Integer idCampeonato, List<PruebasDTO> pruebasDTO);
 
     public CampeonatosDTO listarCampeonatosId(Integer id);
-
-    List<CampeonatosDTO> listarSoloCampeonatosDto();
 
 }

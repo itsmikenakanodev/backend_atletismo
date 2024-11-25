@@ -69,16 +69,20 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
 
     @Override
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
-    public List<CampeonatosDTO> listarCampeonatosDto() {
-        // TODO Auto-generated method stub
-        return campeonatosRepo.listarCampeonatos().stream().map(this::convertToDto).collect(Collectors.toList());
+    public List<CampeonatosDTO> listarCampeonatosSinPruebasDto(LocalDate fecha) {
+        return campeonatosRepo.listarCampeonatosSinPruebas(fecha)
+            .stream()
+            .map(this::convertToDtoSinPruebas)
+            .collect(Collectors.toList());
     }
 
     @Override
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
-    public List<CampeonatosDTO> listarCampeonatosDto(LocalDate fecha) {
-        // TODO Auto-generated method stub
-        return campeonatosRepo.listarCampeonatosPorMes(fecha).stream().map(this::convertToDto).collect(Collectors.toList());
+    public List<CampeonatosDTO> listarCampeonatosConPruebasDto(LocalDate fecha) {
+        return campeonatosRepo.listarCampeonatosPorMes(fecha)
+            .stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -159,11 +163,6 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
         var a= campeonatosRepo.buscarPorId(id);
         CampeonatosDTO b=this.convertToDto(a);
         return b;
-    }
-
-    @Override
-    public List<CampeonatosDTO> listarSoloCampeonatosDto() {
-        return campeonatosRepo.listarCampeonatos().stream().map(this::convertToDtoSinPruebas).collect(Collectors.toList());
     }
 
     private CampeonatosDTO convertToDtoSinPruebas(Campeonato campeonato) {

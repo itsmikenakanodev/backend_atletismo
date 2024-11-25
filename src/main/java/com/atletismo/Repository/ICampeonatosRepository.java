@@ -13,6 +13,8 @@ public interface ICampeonatosRepository {
 
     List<Campeonato> listarCampeonatosProvincia(String provincia);
 
+    List<Campeonato> listarCampeonatosSinPruebas(LocalDate fecha);
+
     public List<Campeonato> listarCampeonatosPorMes(LocalDate fecha);
 
     Campeonato buscarPorId(Integer id);

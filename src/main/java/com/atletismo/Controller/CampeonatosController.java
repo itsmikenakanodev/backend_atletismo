@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class CampeonatosController {
     @GetMapping(path = "/dto",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosDto() {
         try{
-            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosDto(), null, HttpStatus.OK);
+            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosConPruebasDto(), null, HttpStatus.OK);
         }catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
@@ -84,7 +85,7 @@ public class CampeonatosController {
     public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosDtoPorFecha(@RequestParam int anio, @RequestParam int mes) {
         try{
             LocalDate fecha = LocalDate.of(anio, mes,1);
-            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosDto(fecha), null, HttpStatus.OK);
+            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosConPruebasDto(fecha), null, HttpStatus.OK);
         }catch(Exception e){
             return ResponseEntity.internalServerError().build();
         }
@@ -92,10 +93,10 @@ public class CampeonatosController {
     }
 
     @GetMapping(path = "/dto/ligero",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosSinPruebasDto() {
+    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosSinPruebasDto(@RequestParam int anio, @RequestParam int mes) {
         try{
-            System.out.println("*-------------EJecutando el metodo");
-            return new ResponseEntity<>(this.campeonatosService.listarSoloCampeonatosDto(), null, HttpStatus.OK);
+            LocalDate fecha = LocalDate.of(anio, mes,1);
+            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosSinPruebasDto(fecha), null, HttpStatus.OK);
         }catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
@@ -135,6 +136,52 @@ public class CampeonatosController {
     public ResponseEntity<CampeonatosDTO> consultarCampeonatosPruebasId(@PathVariable Integer id) {
         CampeonatosDTO c=this.campeonatosService.listarCampeonatosId(id);
         return new ResponseEntity<>(c, null, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/campeonatos-con-pruebas", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CampeonatosDTO>> listarCampeonatosConPruebasPorMes(
+            @RequestParam int anio,
+            @RequestParam int mes) {
+        try {
+            if (mes < 1 || mes > 12) {
+                return ResponseEntity.badRequest().build();
+            }
+            
+            if (anio < 2000 || anio > 2100) {
+                return ResponseEntity.badRequest().build();
+            }
+
+            LocalDate fecha = LocalDate.of(anio, mes, 1);
+            List<CampeonatosDTO> campeonatos = this.campeonatosService.listarCampeonatosConPruebasDto(fecha);
+            return ResponseEntity.ok(campeonatos); // Retornará lista vacía si no hay resultados
+            
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping(path = "/campeonatos-sin-pruebas", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CampeonatosDTO>> listarCampeonatosSinPruebasPorMes(
+            @RequestParam int anio,
+            @RequestParam int mes) {
+        try {
+            if (mes < 1 || mes > 12) {
+                return ResponseEntity.badRequest().build();
+            }
+            
+            if (anio < 2000 || anio > 2100) {
+                return ResponseEntity.badRequest().build();
+            }
+
+            LocalDate fecha = LocalDate.of(anio, mes, 1);
+            List<CampeonatosDTO> campeonatos = this.campeonatosService.listarCampeonatosSinPruebasDto(fecha);
+            return ResponseEntity.ok(campeonatos); // Retornará lista vacía si no hay resultados
+            
+        } catch (DateTimeException e) {
+            return ResponseEntity.badRequest().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
 }

@@ -69,39 +69,7 @@ public class CampeonatosController {
     }
     
     
-    /////////////////////////////////////////////////
-    
-    /*@GetMapping(path = "/dto",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosDto() {
-        try{
-            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosConPruebasDto(), null, HttpStatus.OK);
-        }catch(Exception e){
-            return ResponseEntity.badRequest().build();
-        }
-
-    }*/
-
-    @GetMapping(path = "/filtrar",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosDtoPorFecha(@RequestParam int anio, @RequestParam int mes) {
-        try{
-            LocalDate fecha = LocalDate.of(anio, mes,1);
-            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosConPruebasDto(fecha), null, HttpStatus.OK);
-        }catch(Exception e){
-            return ResponseEntity.internalServerError().build();
-        }
-
-    }
-
-    @GetMapping(path = "/dto/ligero",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosSinPruebasDto(@RequestParam int anio, @RequestParam int mes) {
-        try{
-            LocalDate fecha = LocalDate.of(anio, mes,1);
-            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosSinPruebasDto(fecha), null, HttpStatus.OK);
-        }catch(Exception e){
-            return ResponseEntity.badRequest().build();
-        }
-
-    }
+  
     @GetMapping(path = "/dto/id/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CampeonatosDTO> consultarCampeonatosIdDto(@PathVariable Integer id) {
         try{

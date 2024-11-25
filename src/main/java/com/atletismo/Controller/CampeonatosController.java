@@ -71,7 +71,7 @@ public class CampeonatosController {
     
     /////////////////////////////////////////////////
     
-    @GetMapping(path = "/dto",produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@GetMapping(path = "/dto",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosDto() {
         try{
             return new ResponseEntity<>(this.campeonatosService.listarCampeonatosConPruebasDto(), null, HttpStatus.OK);
@@ -79,7 +79,7 @@ public class CampeonatosController {
             return ResponseEntity.badRequest().build();
         }
 
-    }
+    }*/
 
     @GetMapping(path = "/filtrar",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosDtoPorFecha(@RequestParam int anio, @RequestParam int mes) {

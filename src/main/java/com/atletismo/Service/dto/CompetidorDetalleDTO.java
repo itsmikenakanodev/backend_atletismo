@@ -15,6 +15,7 @@ import java.time.Duration;
 public class CompetidorDetalleDTO {
 
     private String nombreEvento;
+    private String criterio;
     private String nombres;
     private String apellidos;
     private String provincia;
@@ -25,4 +26,5 @@ public class CompetidorDetalleDTO {
     private BigDecimal distancia;
     private Integer posicion;
     private Integer puntaje;
+    private BigDecimal viento;
 }

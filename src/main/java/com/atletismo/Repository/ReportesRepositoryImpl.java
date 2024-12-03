@@ -36,18 +36,18 @@ public class ReportesRepositoryImpl implements IReportesRepository{
     @Override
     public List<EventoCompetidorCountDTO> contarCompetidoresPorEvento(Integer idCampeonato) {
         String sql = "SELECT new com.atletismo.Service.dto.EventoCompetidorCountDTO(" +
-                "e.nombre, " +
-                "COUNT(DISTINCT CASE WHEN u.sexo = 'M' AND comp.estadoParticipacion = 'Confirmado' THEN comp.id ELSE NULL END), " +
-                "COUNT(DISTINCT CASE WHEN u.sexo = 'F' AND comp.estadoParticipacion = 'Confirmado' THEN comp.id ELSE NULL END)) " +
-                "FROM Campeonato c " +
-                "JOIN CampeonatoPrueba cp ON cp.campeonato.id = c.id "+
-                "JOIN Prueba e ON cp.prueba.id = e.id "+
-                "LEFT JOIN Resultado cr ON cr.prueba.id = e.id "+
-                "LEFT JOIN Competidor comp ON comp.id = cr.competidor.id "+
-                "LEFT JOIN Usuario u ON comp.usuario.id = u.id "+
-                "WHERE c.id = :campeonatoId "+
-                "GROUP BY c.nombre, e.nombre " +
-                "ORDER BY c.nombre, e.nombre";
+              "e.nombre, " +
+              "COUNT(DISTINCT CASE WHEN u.sexo = 'M' AND comp.estadoParticipacion = 'Confirmado' THEN comp.id ELSE NULL END), " +
+              "COUNT(DISTINCT CASE WHEN u.sexo = 'F' AND comp.estadoParticipacion = 'Confirmado' THEN comp.id ELSE NULL END)) " +
+              "FROM CampeonatoPrueba ce " +
+              "JOIN ce.prueba e " +
+              "LEFT JOIN Resultado r ON r.prueba.id = e.id AND r.campeonato.id = ce.campeonato.id " +
+              "LEFT JOIN r.competidor comp " +
+              "LEFT JOIN comp.usuario u " +
+              "WHERE ce.campeonato.id = :campeonatoId " +
+              "GROUP BY e.nombre " +
+              "ORDER BY e.nombre";
+            
 
         TypedQuery<EventoCompetidorCountDTO> query = entityManager.createQuery(sql, EventoCompetidorCountDTO.class);
         query.setParameter("campeonatoId", idCampeonato);
@@ -58,6 +58,7 @@ public class ReportesRepositoryImpl implements IReportesRepository{
     public List<CompetidorDetalleDTO> obtenerDetalleCompetidoresPorCampeonato(Integer idCampeonato) {
         String sql = "SELECT new com.atletismo.Service.dto.CompetidorDetalleDTO(" +
                 "e.nombre, " +
+                "e.criterio, " +
                 "u.nombres, " +
                 "u.apellidos, " +
                 "u.ciudad, " +
@@ -67,7 +68,7 @@ public class ReportesRepositoryImpl implements IReportesRepository{
                 "cr.marca, " +
                 "cr.distancia, " +
                 "cr.posicion, " +
-                "cr.puntaje) " +
+                "cr.puntaje, cr.viento) " +
                 "FROM Campeonato c " +
                 "JOIN Competidor comp ON c.id = comp.campeonato.id " +
                 "JOIN Usuario u ON comp.usuario.id = u.id " +

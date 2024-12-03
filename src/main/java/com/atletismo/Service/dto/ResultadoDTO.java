@@ -15,7 +15,7 @@ public class ResultadoDTO {
     private BigDecimal distancia;
     private Integer posicion;
     private Integer puntaje;
-    private Integer intento;
+    private BigDecimal viento;
     private Integer competidorId;
     private String categoria;
     private Integer usuarioId;

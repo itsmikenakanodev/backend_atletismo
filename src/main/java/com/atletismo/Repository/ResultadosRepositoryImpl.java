@@ -71,7 +71,7 @@ public class ResultadosRepositoryImpl implements IResultadosRepository {
 	@Override
 	public List<ResultadoDTO> buscarPorCampeonatoYPrueba(Integer idCampeonato, Integer idPrueba) {
 		String jpql = "SELECT new com.atletismo.Service.dto.ResultadoDTO(" +
-					  "r.id, r.marca, r.distancia, r.posicion, r.puntaje, r.intento, " +
+					  "r.id, r.marca, r.distancia, r.posicion, r.puntaje, r.viento, " +
 					  "c.id, c.categoria, " +
 					  "u.id, u.nombres, u.apellidos, u.numeroSocio) " +
 					  "FROM Resultado r " +

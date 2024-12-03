@@ -36,6 +36,9 @@ public class Resultado {
     @Column(name = "attempt")
     private Integer intento;
 
+    @Column(name = "wind")
+    private BigDecimal viento;
+
     @ManyToOne
     @JoinColumn(name = "competitor_id")
     private Competidor competidor;

@@ -73,10 +73,12 @@ public class ResultadosRepositoryImpl implements IResultadosRepository {
 		String jpql = "SELECT new com.atletismo.Service.dto.ResultadoDTO(" +
 					  "r.id, r.marca, r.distancia, r.posicion, r.puntaje, r.viento, " +
 					  "c.id, c.categoria, " +
-					  "u.id, u.nombres, u.apellidos, u.numeroSocio) " +
+					  "u.id, u.nombres, u.apellidos, u.numeroSocio, " +
+					  "p.criterio) " +
 					  "FROM Resultado r " +
 					  "JOIN r.competidor c " +
 					  "JOIN c.usuario u " +
+					  "JOIN r.prueba p " +
 					  "WHERE r.campeonato.id = :idCampeonato " +
 					  "AND r.prueba.id = :idPrueba";
 		

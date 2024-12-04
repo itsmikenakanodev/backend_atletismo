@@ -21,4 +21,5 @@ public class ResultadoDTO {
     private String nombres;
     private String apellidos;
     private Integer numeroSocio;
+    private String criterio;
 } 

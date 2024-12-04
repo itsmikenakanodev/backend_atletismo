@@ -68,6 +68,11 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
     }
 
     @Override
+    public List<Campeonato> obtenerCampeonatosFuturos() {
+        return campeonatosRepo.listarCampeonatosFuturos();
+    }
+
+    @Override
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public List<CampeonatosDTO> listarCampeonatosSinPruebasDto(LocalDate fecha) {
         return campeonatosRepo.listarCampeonatosSinPruebas(fecha)

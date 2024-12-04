@@ -152,4 +152,14 @@ public class CampeonatosController {
         }
     }
 
+    @GetMapping(path = "/futuros", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Campeonato>> obtenerCampeonatosFuturos() {
+        try {
+            List<Campeonato> campeonatosFuturos = this.campeonatosService.obtenerCampeonatosFuturos();
+            return new ResponseEntity<>(campeonatosFuturos, null, HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }

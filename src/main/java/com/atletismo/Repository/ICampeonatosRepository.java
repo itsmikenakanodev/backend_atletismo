@@ -17,6 +17,8 @@ public interface ICampeonatosRepository {
 
     public List<Campeonato> listarCampeonatosPorMes(LocalDate fecha);
 
+    public List<Campeonato> listarCampeonatosFuturos();
+
     Campeonato buscarPorId(Integer id);
 
     Boolean actualizarCampeonatos(Campeonato campeonato);

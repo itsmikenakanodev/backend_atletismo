@@ -111,4 +111,15 @@ public class CampeonatoRepositoryImpl implements ICampeonatosRepository{
         myQ.setParameter("provincia", provincia);
         return myQ.getResultList();
     }
+
+    @Override
+    public List<Campeonato> listarCampeonatosFuturos() {
+        TypedQuery<Campeonato> myQ = this.em.createQuery(
+            "SELECT c FROM Campeonato c WHERE c.fechaInicio > :fechaActual ORDER BY c.fechaInicio ASC", 
+            Campeonato.class
+        );
+        myQ.setParameter("fechaActual", LocalDate.now());
+        myQ.setMaxResults(7); // Limitar a los 7 primeros resultados
+        return myQ.getResultList();
+    }
 }

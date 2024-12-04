@@ -31,4 +31,6 @@ public interface ICampeonatoService {
 
     public CampeonatosDTO listarCampeonatosId(Integer id);
 
+    List<Campeonato> obtenerCampeonatosFuturos();
+
 }

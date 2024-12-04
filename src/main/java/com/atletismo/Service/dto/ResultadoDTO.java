@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
-import java.time.Duration;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResultadoDTO {
     private Integer id;
-    private Duration marca;
+    private String marca;
     private BigDecimal distancia;
     private Integer posicion;
     private Integer puntaje;

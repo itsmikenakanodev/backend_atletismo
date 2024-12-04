@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 
 @Data
 @AllArgsConstructor
@@ -22,7 +21,7 @@ public class Resultado {
     private Integer id;
 
     @Column(name = "result_time")
-    private Duration marca;
+    private String marca;
 
     @Column(name = "result_distance")
     private BigDecimal distancia;
@@ -51,7 +50,7 @@ public class Resultado {
     @JoinColumn(name = "championship_id")
     private Campeonato campeonato;
 
-    public Resultado(Integer id, Duration marca, BigDecimal distancia, 
+    public Resultado(Integer id, String marca, BigDecimal distancia, 
                     Integer posicion, Integer puntaje, Integer intento,
                     Competidor competidor) {
         this.id = id;

@@ -24,11 +24,21 @@ public class ResultadosController {
         return new ResponseEntity<>(this.resultadosService.insertarResultado(resultado), HttpStatus.OK);
     }
 
-    @PutMapping(path = "/{id}")//, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Boolean> actualizarResultado(@PathVariable Integer id, @RequestBody Resultado resultado){
-        resultado.setId(id);
-        boolean actualizado = this.resultadosService.actualizarResultado(resultado);
-        return ResponseEntity.status(actualizado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(actualizado);
+        Resultado resultadoExistente = this.resultadosService.buscarResultado(id);
+        if (resultadoExistente == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false); // Retorna 404 si no se encuentra
+        }
+        resultadoExistente.setRegistrado(true);
+        resultadoExistente.setDistancia(resultado.getDistancia());
+        resultadoExistente.setMarca(resultado.getMarca());
+        resultadoExistente.setPosicion(resultado.getPosicion());
+        resultadoExistente.setPuntaje(resultado.getPuntaje());
+        resultadoExistente.setViento(resultado.getViento());
+
+        boolean actualizado = this.resultadosService.actualizarResultado(resultadoExistente);
+        return ResponseEntity.ok(actualizado);
     }
 
     @DeleteMapping(path = "/{id}")

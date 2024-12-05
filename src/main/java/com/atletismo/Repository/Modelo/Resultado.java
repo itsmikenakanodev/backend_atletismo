@@ -37,6 +37,9 @@ public class Resultado {
 
     @Column(name = "wind")
     private BigDecimal viento;
+    
+    @Column(name = "registered")
+    private Boolean registrado;
 
     @ManyToOne
     @JoinColumn(name = "competitor_id")

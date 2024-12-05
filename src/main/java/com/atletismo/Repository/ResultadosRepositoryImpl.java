@@ -19,42 +19,36 @@ public class ResultadosRepositoryImpl implements IResultadosRepository {
 
 	@Override
 	public Resultado buscarId(Integer id) {
-		// TODO Auto-generated method stub
 		return this.entityManager.find(Resultado.class, id);
 	}
 
 	@Override
 	public Boolean insertar(Resultado resultados) {
-		// TODO Auto-generated method stub
 		try {
 			this.entityManager.persist(resultados);
 			return true;
 		}catch (Exception e) {
-			// TODO: handle exception
+			
 			return false;
 		}
 	}
 
 	@Override
 	public Boolean actualizar(Resultado resultados) {
-		// TODO Auto-generated method stub
 		try {
 			this.entityManager.merge(resultados);
 			return true;
 		}catch (Exception e) {
-			// TODO: handle exception
 			return false;
 		}
 	}
 
 	@Override
 	public Boolean eliminar(Integer id) {
-		// TODO Auto-generated method stub
 		try {
 			this.entityManager.remove(this.buscarId(id));
 			return true;
 		}catch (Exception e) {
-			// TODO: handle exception
 			return false;
 		}
 	}
@@ -71,7 +65,7 @@ public class ResultadosRepositoryImpl implements IResultadosRepository {
 	@Override
 	public List<ResultadoDTO> buscarPorCampeonatoYPrueba(Integer idCampeonato, Integer idPrueba) {
 		String jpql = "SELECT new com.atletismo.Service.dto.ResultadoDTO(" +
-					  "r.id, r.marca, r.distancia, r.posicion, r.puntaje, r.viento, " +
+					  "r.id, r.marca, r.distancia, r.posicion, r.puntaje, r.viento, r.registrado, " +
 					  "c.id, c.categoria, " +
 					  "u.id, u.nombres, u.apellidos, u.numeroSocio, " +
 					  "p.criterio) " +
@@ -80,7 +74,8 @@ public class ResultadosRepositoryImpl implements IResultadosRepository {
 					  "JOIN c.usuario u " +
 					  "JOIN r.prueba p " +
 					  "WHERE r.campeonato.id = :idCampeonato " +
-					  "AND r.prueba.id = :idPrueba";
+					  "AND r.prueba.id = :idPrueba " +
+					  "ORDER BY r.registrado ASC";
 		
 		return this.entityManager.createQuery(jpql, ResultadoDTO.class)
 				.setParameter("idCampeonato", idCampeonato)

@@ -15,6 +15,7 @@ public class ResultadoDTO {
     private Integer posicion;
     private Integer puntaje;
     private BigDecimal viento;
+    private Boolean registrado;
     private Integer competidorId;
     private String categoria;
     private Integer usuarioId;

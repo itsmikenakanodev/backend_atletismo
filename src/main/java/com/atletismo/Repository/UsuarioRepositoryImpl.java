@@ -151,13 +151,18 @@ public class UsuarioRepositoryImpl implements IUsuariosRepository{
     }
 
     @Override
-    public List<Usuario> buscarUsuariosAprobadosPorApellidoOCedula(String apellido, String cedula) {
+    public List<Usuario> buscarUsuariosAprobadosPorApellidoOCedula(String apellido, String cedula, int page, int size) {
         try {
             TypedQuery<Usuario> myQuery = this.entityManager.createQuery(
                     "SELECT u FROM Usuario u WHERE u.estadoRegistro = true AND (u.apellidos LIKE :apellido OR u.cedula = :cedula) AND u.rol.id = 5",
                     Usuario.class);
             myQuery.setParameter("apellido", "%" + apellido + "%");
             myQuery.setParameter("cedula", cedula);
+            
+            // Configura la paginación
+            myQuery.setFirstResult(page * size); // Offset
+            myQuery.setMaxResults(size); // Limit
+            
             return myQuery.getResultList();
         } catch (Exception e) {
             e.printStackTrace();

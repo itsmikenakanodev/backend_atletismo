@@ -23,6 +23,6 @@ public interface IUsuariosRepository {
 
     public List<UsuarioDocumentoDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia);
 
-    public List<Usuario> buscarUsuariosAprobadosPorApellidoOCedula(String apellido, String cedula);
+    public List<Usuario> buscarUsuariosAprobadosPorApellidoOCedula(String apellido, String cedula, int page, int size);
 
 }

@@ -108,17 +108,23 @@ public class UsuariosControllerRestFul {
     }
 
     @GetMapping("/buscar")
-    public ResponseEntity<List<Usuario>> buscarUsuarios(
-            @RequestParam(value = "apellidos", required = false) String apellidos,
-            @RequestParam(value = "cedula", required = false) String cedula) {
-
-        // Validar que al menos uno de los parámetros esté presente
-        if ((apellidos == null || apellidos.isEmpty()) && (cedula == null || cedula.isEmpty())) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); // O cualquier otro manejo adecuado
+    public ResponseEntity<List<Usuario>> buscarUsuariosAprobados(
+            @RequestParam(required = false) String apellido,
+            @RequestParam(required = false) String cedula,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        
+        if ((apellido == null || apellido.isEmpty()) && (cedula == null || cedula.isEmpty())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 
-        List<Usuario> usuarios = usuariosService.buscarUsuariosAprobadosPorApellidoOCedula(apellidos, cedula);
-        return new ResponseEntity<>(usuarios, HttpStatus.OK);
+        List<Usuario> usuarios = this.usuariosService.buscarUsuariosAprobadosPorApellidoOCedula(apellido, cedula, page, size);
+        
+        if (usuarios.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        
+        return ResponseEntity.ok(usuarios);
     }
 
     /////////////////////administradores//////////////////////

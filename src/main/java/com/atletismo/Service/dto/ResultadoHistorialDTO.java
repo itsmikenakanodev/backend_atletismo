@@ -20,4 +20,5 @@ public class ResultadoHistorialDTO {
     private Integer numeroSocio;
     private String criterioPrueba;
     private String nombrePrueba;
+    private String nombreCampeonato;
 } 

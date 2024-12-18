@@ -96,11 +96,13 @@ public class ResultadosRepositoryImpl implements IResultadosRepository {
 				"r.id, r.marca, r.distancia, r.posicion, r.puntaje, r.viento, r.registrado, " +
 				"c.categoria, " +
 				"u.numeroSocio, " +
-				"p.criterio, p.nombre) " +
+				"p.criterio, p.nombre, " +
+				"camp.nombre) " +
 				"FROM Resultado r " +
 				"JOIN r.competidor c " +
 				"JOIN c.usuario u " +
 				"JOIN r.prueba p " +
+				"JOIN r.campeonato camp " +
 				"WHERE r.registrado = true AND c.estadoParticipacion = 'Confirmado' AND u.cedula = :cedula " +
 				"ORDER BY p.nombre, r.id DESC";
 

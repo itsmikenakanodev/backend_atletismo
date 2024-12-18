@@ -3,6 +3,7 @@ package com.atletismo.Service;
 import com.atletismo.Repository.IResultadosRepository;
 import com.atletismo.Repository.Modelo.Resultado;
 import com.atletismo.Service.dto.ResultadoDTO;
+import com.atletismo.Service.dto.ResultadoHistorialDTO;
 
 import java.util.List;
 
@@ -42,6 +43,11 @@ public class ResultadosServiceImpl implements IResultadosService {
 	@Override
 	public List<ResultadoDTO> buscarPorCampeonatoYPrueba(Integer idCampeonato, Integer idPrueba) {
 		return this.resultadosRepository.buscarPorCampeonatoYPrueba(idCampeonato, idPrueba);
+	}
+
+	@Override
+	public List<ResultadoHistorialDTO> buscarResultadosAprobadosPorCedulaUsuario(String cedula) {
+		return this.resultadosRepository.buscarResultadosAprobadosPorCedulaUsuario(cedula);
 	}
 
 }

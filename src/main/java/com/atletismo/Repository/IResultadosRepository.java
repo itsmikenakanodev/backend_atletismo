@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.atletismo.Repository.Modelo.Resultado;
 import com.atletismo.Service.dto.ResultadoDTO;
+import com.atletismo.Service.dto.ResultadoHistorialDTO;
 
 public interface IResultadosRepository {
 
@@ -12,4 +13,5 @@ public interface IResultadosRepository {
 	public Boolean actualizar(Resultado resultados);
 	public Boolean eliminar(Integer id);
 	List<ResultadoDTO> buscarPorCampeonatoYPrueba(Integer idCampeonato, Integer idPrueba);
+	List<ResultadoHistorialDTO> buscarResultadosAprobadosPorCedulaUsuario(String cedula);
 }

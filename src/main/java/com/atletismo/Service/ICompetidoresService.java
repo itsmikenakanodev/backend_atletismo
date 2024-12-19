@@ -18,6 +18,7 @@ public interface ICompetidoresService {
 	List<CompetidoresDTO> listarCompetidoresDTO();
 	public Boolean actualizarEstado(Integer id, String nuevoEstado);
 	public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(String estadoParticipacion, String ciudad);
+	boolean existeCompetidorPorCampeonatoYUsuario(Integer campeonatoId, Integer usuarioId);
 
 
 }

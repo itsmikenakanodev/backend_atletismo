@@ -74,5 +74,10 @@ public class CompetidoresController {
        return new ResponseEntity<>(this.competidoresService.listarCompetidores(), null, 200);
     }
     
+    @GetMapping(path = "/existe", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> verificarCompetidor(@RequestParam Integer campeonatoId, @RequestParam Integer usuarioId) {
+        boolean existe = this.competidoresService.existeCompetidorPorCampeonatoYUsuario(campeonatoId, usuarioId);
+        return ResponseEntity.ok(existe); // Retorna 200 OK con el resultado
+    }
 
 }

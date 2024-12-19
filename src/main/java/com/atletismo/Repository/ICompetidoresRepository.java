@@ -14,4 +14,6 @@ public interface ICompetidoresRepository {
 	List<Competidor> listarCompetidores();
 
 	public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(String estadoParticipacion, String ciudad);
+
+	boolean existeCompetidorPorCampeonatoYUsuario(Integer campeonatoId, Integer usuarioId);
 }

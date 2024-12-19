@@ -88,5 +88,9 @@ public class CompetidoresService implements ICompetidoresService{
         return  this.competidoresRepository.listarCompetidoresPorEstadoYCiudad(estadoParticipacion, ciudad);
     }
 
+    @Override
+    public boolean existeCompetidorPorCampeonatoYUsuario(Integer campeonatoId, Integer usuarioId) {
+        return competidoresRepository.existeCompetidorPorCampeonatoYUsuario(campeonatoId, usuarioId);
+    }
 
 }

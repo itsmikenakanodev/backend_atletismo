@@ -13,10 +13,10 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class CompetidoresRepository implements ICompetidoresRepository{
-    
+public class CompetidoresRepository implements ICompetidoresRepository {
+
     @PersistenceContext
-	private EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public Boolean insertar(Competidor competidor) {
@@ -36,7 +36,7 @@ public class CompetidoresRepository implements ICompetidoresRepository{
     public Boolean actualizar(Competidor competidor) {
         try {
             this.entityManager.merge(competidor);
-			return true;
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
@@ -47,7 +47,7 @@ public class CompetidoresRepository implements ICompetidoresRepository{
     public Boolean eliminar(Integer id) {
         try {
             this.entityManager.remove(buscarPorId(id));
-			return true;
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
@@ -59,17 +59,17 @@ public class CompetidoresRepository implements ICompetidoresRepository{
         return this.entityManager.find(Competidor.class, id);
     }
 
-	@Override
-	public List<Competidor> listarCompetidores() {
-        TypedQuery<Competidor> myQuery = this.entityManager.createQuery("SELECT c FROM Competidor c",Competidor.class);
+    @Override
+    public List<Competidor> listarCompetidores() {
+        TypedQuery<Competidor> myQuery = this.entityManager.createQuery("SELECT c FROM Competidor c", Competidor.class);
         return myQuery.getResultList();
-	}
-
+    }
 
     @Override
     public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(String estadoParticipacion, String ciudad) {
         try {
-            String sql = "SELECT new CompetidoresEstadoDTO(c.id, c.fechaInscripcion, c.estadoParticipacion, u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, d) " +
+            String sql = "SELECT new CompetidoresEstadoDTO(c.id, c.fechaInscripcion, c.estadoParticipacion, u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, d) "
+                    +
                     "FROM Competidor c " +
                     "JOIN c.usuario u " +
                     "LEFT JOIN Documentos d ON d.usuario.id = u.id " +
@@ -83,6 +83,17 @@ public class CompetidoresRepository implements ICompetidoresRepository{
         } catch (Exception e) {
             return new ArrayList<>();
         }
+    }
+
+    @Override
+    public boolean existeCompetidorPorCampeonatoYUsuario(Integer campeonatoId, Integer usuarioId) {
+        String jpql = "SELECT COUNT(c) > 0 FROM Competidor c " +
+                "WHERE c.campeonato.id = :campeonatoId AND c.usuario.id = :usuarioId";
+
+        return this.entityManager.createQuery(jpql, Boolean.class)
+                .setParameter("campeonatoId", campeonatoId)
+                .setParameter("usuarioId", usuarioId)
+                .getSingleResult();
     }
 
 }

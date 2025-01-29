@@ -97,7 +97,7 @@ public class CampeonatoRepositoryImpl implements ICampeonatosRepository{
             "SELECT DISTINCT c FROM Campeonato c " +
             "LEFT JOIN FETCH c.campeonatoPruebas cp " +
             "LEFT JOIN FETCH cp.prueba " +
-            "WHERE (c.inscripcionInicio >= :fechaMinima AND c.fechaFin < :fechaMaxima) OR (c.inscripcionInicio >= :fechaMinima AND c.inscripcionInicio < :fechaMaxima)",
+            "WHERE (c.inscripcionInicio >= :fechaMinima AND c.fechaFin < :fechaMaxima) OR (c.fechaInicio >= :fechaMinima AND c.fechaInicio < :fechaMaxima)",
             Campeonato.class
         );
         myQ.setParameter("fechaMinima", fecha);

@@ -90,8 +90,8 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
             .collect(Collectors.toList());
     }
 
-    public List<CampeonatosDTO> obtenerCampeonatosFuturosPorFechaActual() {
-        return campeonatosRepo.obtenerCampeonatosFuturosPorFechaActual()
+    public List<CampeonatosDTO> obtenerCampeonatosFuturosPorFechaActual(String provincia) {
+        return campeonatosRepo.obtenerCampeonatosFuturosPorFechaActual(provincia)
             .stream()
             .map(this::convertToDto)
             .collect(Collectors.toList());

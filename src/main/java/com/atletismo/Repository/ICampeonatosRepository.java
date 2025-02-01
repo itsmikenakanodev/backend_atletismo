@@ -17,7 +17,7 @@ public interface ICampeonatosRepository {
 
     public List<Campeonato> listarCampeonatosPorMes(LocalDate fecha);
 
-    public List<Campeonato> obtenerCampeonatosFuturosPorFechaActual();
+    public List<Campeonato> obtenerCampeonatosFuturosPorFechaActual(String provincia);
 
     public List<Campeonato> listarCampeonatosFuturos();
 

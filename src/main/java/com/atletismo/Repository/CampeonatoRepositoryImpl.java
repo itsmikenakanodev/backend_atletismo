@@ -106,13 +106,14 @@ public class CampeonatoRepositoryImpl implements ICampeonatosRepository{
     }
 
     @Override
-    public List<Campeonato> obtenerCampeonatosFuturosPorFechaActual() {
+    public List<Campeonato> obtenerCampeonatosFuturosPorFechaActual(String provincia) {
         TypedQuery<Campeonato> myQ = this.em.createQuery("SELECT c FROM Campeonato c " +
         "LEFT JOIN FETCH c.campeonatoPruebas cp " +
         "LEFT JOIN FETCH cp.prueba " +
-        "WHERE c.inscripcionInicio > :fechaActual", 
+        "WHERE c.inscripcionInicio > :fechaActual AND c.sede = :provincia", 
         Campeonato.class);
         myQ.setParameter("fechaActual", LocalDate.now());
+        myQ.setParameter("provincia", provincia);
         return myQ.getResultList();
     }
 

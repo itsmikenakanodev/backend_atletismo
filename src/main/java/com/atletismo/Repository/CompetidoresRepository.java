@@ -73,7 +73,8 @@ public class CompetidoresRepository implements ICompetidoresRepository {
                     "FROM Competidor c " +
                     "JOIN c.usuario u " +
                     "LEFT JOIN Documentos d ON d.usuario.id = u.id " +
-                    "WHERE d.tipo = :tipoDoc AND c.estadoParticipacion = :estadoParticipacion AND u.ciudad = :ciudad";
+                    "WHERE d.tipo = :tipoDoc AND c.estadoParticipacion = :estadoParticipacion AND u.ciudad = :ciudad " +
+                    "AND d.nombre LIKE CONCAT('%', c.campeonato.id, '%')"; 
 
             TypedQuery<CompetidoresEstadoDTO> query = entityManager.createQuery(sql, CompetidoresEstadoDTO.class);
             query.setParameter("estadoParticipacion", estadoParticipacion);

@@ -33,4 +33,6 @@ public interface ICampeonatoService {
 
     List<Campeonato> obtenerCampeonatosFuturos();
 
+    List<CampeonatosDTO> obtenerCampeonatosFuturosPorFechaActual();
+
 }

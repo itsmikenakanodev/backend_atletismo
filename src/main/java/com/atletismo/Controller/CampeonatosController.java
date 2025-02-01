@@ -162,4 +162,14 @@ public class CampeonatosController {
         }
     }
 
+    @GetMapping(path = "/campeonatos-para-asignar-pruebas", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CampeonatosDTO>> obtenerCampeonatosParaAsignarPruebas() {
+        try {
+            List<CampeonatosDTO> campeonatosFuturos = this.campeonatosService.obtenerCampeonatosFuturosPorFechaActual();
+            return new ResponseEntity<>(campeonatosFuturos, null, HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }

@@ -90,6 +90,13 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
             .collect(Collectors.toList());
     }
 
+    public List<CampeonatosDTO> obtenerCampeonatosFuturosPorFechaActual() {
+        return campeonatosRepo.obtenerCampeonatosFuturosPorFechaActual()
+            .stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
+    }
+
     @Override
     public Boolean agregarPruebas(Integer idCampeonato, List<PruebasDTO> pruebasDTO) {
         Boolean flag = false;

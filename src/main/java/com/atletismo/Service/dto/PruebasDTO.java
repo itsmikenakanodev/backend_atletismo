@@ -17,5 +17,5 @@ public class PruebasDTO {
     private String tipo;
     private String descripcion;
     private String categoria;
-
+    private String criterio;
 }

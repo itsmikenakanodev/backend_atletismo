@@ -162,6 +162,7 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
         dto.setNombre(campeonatoPruebas.getPrueba().getNombre());
         dto.setDescripcion(campeonatoPruebas.getPrueba().getDescripcion());
         dto.setTipo(campeonatoPruebas.getPrueba().getTipo());
+        dto.setCriterio(campeonatoPruebas.getPrueba().getCriterio());
         return dto;
     }
 

@@ -40,7 +40,7 @@ public class Campeonato {
 	@Column(name = "registration_end_date")
 	private LocalDate inscripcionFin;
 
-	@OneToMany(mappedBy = "campeonato", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "campeonato", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<CampeonatoPrueba> campeonatoPruebas;
 
 	@OneToMany(mappedBy = "campeonato")

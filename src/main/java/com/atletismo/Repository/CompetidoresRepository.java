@@ -68,7 +68,7 @@ public class CompetidoresRepository implements ICompetidoresRepository {
     @Override
     public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(String estadoParticipacion, String ciudad) {
         try {
-            String sql = "SELECT new CompetidoresEstadoDTO(c.id, c.fechaInscripcion, c.estadoParticipacion, u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, d) "
+            String sql = "SELECT new CompetidoresEstadoDTO(c.id, c.fechaInscripcion, c.estadoParticipacion, c.totalPagar, c.cantidadPruebas, u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, d, c.campeonato.nombre) "
                     +
                     "FROM Competidor c " +
                     "JOIN c.usuario u " +

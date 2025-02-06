@@ -31,6 +31,12 @@ public class Competidor {
     @Column(name = "category")
     private String categoria;
 
+    @Column(name = "total_fee")
+    private Double totalPagar;
+
+    @Column(name = "num_events")
+    private Integer cantidadPruebas;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Usuario usuario;

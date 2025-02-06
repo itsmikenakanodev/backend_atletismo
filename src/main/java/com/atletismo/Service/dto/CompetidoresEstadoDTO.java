@@ -18,6 +18,8 @@ public class CompetidoresEstadoDTO {
 
     private Date fechaInscripcion;
     private String estadoParticipacion;
+    private Double total;
+    private Integer cantidadPruebas;
     private Integer idUsuario;
     private String nombres;
     private String apellidos;
@@ -27,4 +29,5 @@ public class CompetidoresEstadoDTO {
     private Date fechaNacimiento;
     private Character sexo;
     private Documentos documento;
+    private String nombreCampeonato;
 }

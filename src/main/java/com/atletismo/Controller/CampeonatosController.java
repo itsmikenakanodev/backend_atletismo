@@ -51,8 +51,6 @@ public class CampeonatosController {
 
     @PutMapping(path = "/")
 	public ResponseEntity<Boolean> actualizarCampeonato(@RequestBody Campeonato campeonato) {
-        System.out.println(campeonato);
-        //return new ResponseEntity<>(this.campeonatosService.actualizarCampeonatos(campeonatos), null, HttpStatus.OK);
         boolean actualizado = this.campeonatosService.actualizarCampeonatos(campeonato);
         return ResponseEntity.status(actualizado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(actualizado);
     }

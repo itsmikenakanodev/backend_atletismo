@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ICampeonatoService {
 
-    Boolean guarCampeonatos(Campeonato campeonato);
+    Boolean guardarCampeonatos(Campeonato campeonato);
 
     List<Campeonato> listarCampeonatos();
 

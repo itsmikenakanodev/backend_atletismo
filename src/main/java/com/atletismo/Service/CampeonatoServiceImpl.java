@@ -52,7 +52,7 @@ public class CampeonatoServiceImpl implements ICampeonatoService{
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public Boolean guarCampeonatos(Campeonato campeonato) {
+    public Boolean guardarCampeonatos(Campeonato campeonato) {
         if(!campeonato.getDocumentos().isEmpty()){
             for (DocumentoCampeonato documento : campeonato.getDocumentos()) {
                 documento.setCampeonato(campeonato);

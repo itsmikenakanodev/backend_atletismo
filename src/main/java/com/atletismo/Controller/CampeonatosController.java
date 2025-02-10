@@ -25,7 +25,7 @@ public class CampeonatosController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> insertarCampeonato(@RequestBody Campeonato campeonato) {
         try{
-            return new ResponseEntity<>(this.campeonatosService.guarCampeonatos(campeonato), null, HttpStatus.OK);
+            return new ResponseEntity<>(this.campeonatosService.guardarCampeonatos(campeonato), null, HttpStatus.OK);
         }catch(RuntimeException ex){
             return ResponseEntity.badRequest().build();
         }

@@ -83,7 +83,7 @@ public class CampeonatoRepositoryImpl implements ICampeonatosRepository{
     public List<Campeonato> listarCampeonatosSinPruebas(LocalDate fecha) {
         TypedQuery<Campeonato> myQ = this.em.createQuery(
             "SELECT c FROM Campeonato c " +
-            "WHERE c.inscripcionInicio >= :fechaMinima AND c.fechaFin < :fechaMaxima",
+            "WHERE (c.inscripcionInicio >= :fechaMinima AND c.fechaFin < :fechaMaxima) OR (c.fechaInicio >= :fechaMinima AND c.fechaInicio < :fechaMaxima)",
             Campeonato.class
         );
         myQ.setParameter("fechaMinima", fecha);

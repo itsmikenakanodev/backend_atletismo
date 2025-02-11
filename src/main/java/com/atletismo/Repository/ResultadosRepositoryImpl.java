@@ -82,6 +82,7 @@ public class ResultadosRepositoryImpl implements IResultadosRepository {
 				"JOIN r.prueba p " +
 				"WHERE r.campeonato.id = :idCampeonato " +
 				"AND r.prueba.id = :idPrueba " +
+				"AND c.estadoParticipacion = 'Confirmado' " +
 				"ORDER BY r.registrado ASC";
 
 		return this.entityManager.createQuery(jpql, ResultadoDTO.class)

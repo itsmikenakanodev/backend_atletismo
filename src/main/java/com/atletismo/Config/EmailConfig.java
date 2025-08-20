@@ -13,8 +13,8 @@ import java.util.Properties;
 public class EmailConfig {
 
 
-    private static final String email ="naciolan0atletismo0master@gmail.com";
-    private static final String password="zsobjjrfzmtiawld";
+    private static final String email ="garciapaezmikexavier@gmail.com";
+    private static final String password="Mike.1234";
 
     private Properties getMailProperties() {
         Properties properties = new Properties();
